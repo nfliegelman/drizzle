@@ -68,12 +68,16 @@
     [
      "2026-07-13T15:12:04Z",
      0.15
+    ],
+    [
+     "2026-07-13T22:31:07Z",
+     0.15
     ]
    ],
    "event_ticker": "KXRAINNYC-26JUL14",
    "ticker": "KXRAINNYC-26JUL14-T0",
    "series": "KXRAINNYC",
-   "logged_at": "2026-07-13T15:12:04Z",
+   "logged_at": "2026-07-13T22:31:07Z",
    "lead": 1,
    "members": 143,
    "models": {
@@ -106,14 +110,14 @@
    },
    "trace_p": 0.15,
    "ref": {
-    "nbm_pop_max": 0.02,
-    "nbm_pop_day": 0.157,
+    "nbm_pop_max": 0.01,
+    "nbm_pop_day": 0.068,
     "nbm_precip": 0.0
    },
    "yb": 0.01,
-   "ya": 0.04,
-   "mid": 0.025,
-   "oi": 2.0,
+   "ya": 0.03,
+   "mid": 0.02,
+   "oi": 3.0,
    "offset": -14400,
    "model_version": "2026-07-07.d1-phase1",
    "cfg": "afb352df"
