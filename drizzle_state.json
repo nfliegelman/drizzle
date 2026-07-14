@@ -67,60 +67,81 @@
    "code": "NYC",
    "target": "2026-07-15",
    "first_logged": "2026-07-14T14:14:16Z",
-   "plays": [],
+   "plays": [
+    {
+     "ticker": "KXRAINNYC-26JUL15-T0",
+     "side": "Buy YES",
+     "entry": 0.12,
+     "net": 0.2563,
+     "edge": 0.2737,
+     "units": 1.0,
+     "stake": 10.0,
+     "p_win": 0.3937,
+     "prob": 0.3937,
+     "mid": 0.105,
+     "why": "suspect edge cap"
+    }
+   ],
    "p_hist": [
     [
      "2026-07-14T14:14:16Z",
      0.364
+    ],
+    [
+     "2026-07-14T22:34:08Z",
+     0.3937
     ]
    ],
    "event_ticker": "KXRAINNYC-26JUL15",
    "ticker": "KXRAINNYC-26JUL15-T0",
    "series": "KXRAINNYC",
-   "logged_at": "2026-07-14T14:14:16Z",
+   "logged_at": "2026-07-14T22:34:08Z",
    "lead": 1,
    "members": 143,
    "models": {
     "gfs025": {
      "n": 31,
-     "wet": 0.2903
+     "wet": 0.3871
     },
     "ecmwf_ifs025": {
      "n": 51,
-     "wet": 0.2745
+     "wet": 0.1765
     },
     "icon_seamless": {
      "n": 40,
-     "wet": 0.175
+     "wet": 0.275
     },
     "gem_global": {
      "n": 21,
-     "wet": 0.2857
+     "wet": 0.4286
     }
    },
-   "p_raw": 0.2517,
-   "p": 0.364,
+   "p_raw": 0.2867,
+   "p": 0.3937,
    "curve": {
     "0.05": 0.3007,
-    "0.1": 0.2517,
-    "0.2": 0.2448,
-    "0.5": 0.1748,
-    "1.0": 0.1119,
-    "2.0": 0.049
+    "0.1": 0.2867,
+    "0.2": 0.2517,
+    "0.5": 0.1888,
+    "1.0": 0.1189,
+    "2.0": 0.0699
    },
    "trace_p": 0.15,
    "ref": {
-    "nbm_pop_max": 0.16,
-    "nbm_pop_day": 0.582,
-    "nbm_precip": 0.0
+    "nbm_pop_max": 0.07,
+    "nbm_pop_day": 0.352,
+    "nbm_precip": 1.1
    },
-   "yb": 0.02,
-   "ya": 0.86,
-   "mid": 0.44,
-   "oi": 0.0,
+   "yb": 0.09,
+   "ya": 0.12,
+   "mid": 0.105,
+   "oi": 2025.79,
    "offset": -14400,
    "model_version": "2026-07-07.d1-phase1",
-   "cfg": "afb352df"
+   "cfg": "afb352df",
+   "plays_lead": 1,
+   "plays_logged_at": "2026-07-14T22:34:08Z",
+   "plays_model_version": "2026-07-07.d1-phase1"
   }
  },
  "resolved": [
