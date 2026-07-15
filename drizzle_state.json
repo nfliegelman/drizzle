@@ -1,68 +1,5 @@
 {
  "predictions": {
-  "NYC|2026-07-14": {
-   "code": "NYC",
-   "target": "2026-07-14",
-   "first_logged": "2026-07-13T15:12:04Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-07-13T15:12:04Z",
-     0.15
-    ],
-    [
-     "2026-07-13T22:31:07Z",
-     0.15
-    ]
-   ],
-   "event_ticker": "KXRAINNYC-26JUL14",
-   "ticker": "KXRAINNYC-26JUL14-T0",
-   "series": "KXRAINNYC",
-   "logged_at": "2026-07-13T22:31:07Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 0.0
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.0
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 0.0
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 0.0
-    }
-   },
-   "p_raw": 0.0,
-   "p": 0.15,
-   "curve": {
-    "0.05": 0.0,
-    "0.1": 0.0,
-    "0.2": 0.0,
-    "0.5": 0.0,
-    "1.0": 0.0,
-    "2.0": 0.0
-   },
-   "trace_p": 0.15,
-   "ref": {
-    "nbm_pop_max": 0.01,
-    "nbm_pop_day": 0.068,
-    "nbm_precip": 0.0
-   },
-   "yb": 0.01,
-   "ya": 0.03,
-   "mid": 0.02,
-   "oi": 3.0,
-   "offset": -14400,
-   "model_version": "2026-07-07.d1-phase1",
-   "cfg": "afb352df"
-  },
   "NYC|2026-07-15": {
    "code": "NYC",
    "target": "2026-07-15",
@@ -487,6 +424,65 @@
     [
      "2026-07-12T22:27:30Z",
      0.1916
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "NYC",
+   "target": "2026-07-14",
+   "lead": 1,
+   "outcome": 0,
+   "exp_val": "0.00",
+   "amount": 0.0,
+   "trace": false,
+   "p": 0.15,
+   "p_raw": 0.0,
+   "curve": {
+    "0.05": 0.0,
+    "0.1": 0.0,
+    "0.2": 0.0,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.15,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.01,
+    "nbm_pop_day": 0.068,
+    "nbm_precip": 0.0
+   },
+   "mid": 0.02,
+   "model_version": "2026-07-07.d1-phase1",
+   "first_logged": "2026-07-13T15:12:04Z",
+   "cfg": "afb352df",
+   "p_hist": [
+    [
+     "2026-07-13T15:12:04Z",
+     0.15
+    ],
+    [
+     "2026-07-13T22:31:07Z",
+     0.15
     ]
    ],
    "plays": []
