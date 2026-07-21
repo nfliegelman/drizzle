@@ -2,7 +2,7 @@
 
 **Purpose of this file:** you are an AI assistant helping the owner (a hobbyist prediction-market bettor, not a professional developer) modify this program. This document tells you what the program is, how it is built, and which decisions are deliberate so you do not undo them. Read it fully before proposing changes. `README.md` is for the owner (setup). `FUTURE.md` is the phase roadmap and known weaknesses. This file is for you.
 
-**Doc version:** 2026-07-07 (d1.0). Drizzle is the sibling of Nimbus (github.com/nfliegelman/nimbus), forked from its fully audited v12 chassis. Nimbus's HANDOFF.md and 12-batch audit register are the deep background; every guard here is a Nimbus guard wearing rain clothes, and the burden of proof for removing one is the same: do not.
+**Doc version:** 2026-07-21 (d1.1). Drizzle is the sibling of Nimbus (github.com/nfliegelman/nimbus), forked from its fully audited v12 chassis. Nimbus's HANDOFF.md and 12-batch audit register are the deep background; every guard here is a Nimbus guard wearing rain clothes, and the burden of proof for removing one is the same: do not.
 
 ---
 
@@ -68,6 +68,8 @@ Every time you change the code, hand the owner back BOTH the updated `drizzle.py
 
 Stdlib only (a security control on a contents:write public workflow, per the Nimbus batch 12 verdict). No frameworks, no chart libraries, charts are inline SVG. Python pinned 3.12; no backslashes inside f-string expressions.
 
+**Repository hygiene.** A `.gitignore` ignores `__pycache__/` and `*.pyc`; never commit compiled bytecode (a stray `drizzle.cpython-312.pyc` and an empty accidental `.github/workflows/test` file were both purged in d1.1). Two files ARE tracked on purpose and must never be added to `.gitignore`: `drizzle_state.json` (the track record; git history is its backup) and `docs/` (the deployed Pages site the workflow regenerates every run). Generated markup is authored in `_page`, which emits `<html lang='en'>` for accessibility; the `docs/*.html` snapshots pick up that markup on the next scheduled run, so a code-only diff that leaves the committed pages behind is expected, not a mismatch.
+
 ## 6. State schema (drizzle_state.json)
 
 `predictions[key]`, key = `CODE|YYYY-MM-DD`: code, target, event_ticker, ticker, series, logged_at, first_logged, lead, members, models{model:{n,wet}}, p_raw, p, curve{threshold:frac}, trace_p, ref{}, yb, ya, mid, oi, offset, model_version, cfg, p_hist (last 6 [stamp, p] revision pairs), plays[]; optional: gated, suppressed; once plays freeze: plays_lead, plays_logged_at, plays_model_version.
@@ -89,6 +91,7 @@ Contract: every reader of old records uses `.get` with fallbacks; adding a REQUI
 
 ## Changelog
 
+- **d1.1 (2026-07-21), HYGIENE + ACCESSIBILITY, MODEL_VERSION UNCHANGED (`2026-07-07.d1-phase1`), CONFIG_HASH UNCHANGED:** Generated-default residue sweep. No model, scoring, sizing, guard, or knob touched, so MODEL_VERSION and CONFIG_HASH deliberately do not move and the track record does not fragment. Changes: (1) added `.gitignore` and purged two tracked artifacts that were never source of truth: a committed `__pycache__/drizzle.cpython-312.pyc` and an empty `.github/workflows/test` file (created accidentally via the web UI; GitHub Actions only runs `*.yml`, so it never did anything). (2) `_page` now emits `<html lang='en'>` (WCAG 3.1.1, Language of Page). (3) Raw-settlements P&L for no-play rows renders the neutral `.small` class instead of loss-red `.neg`, so a settled day the model correctly sat out no longer reads as a loss. Validation: 16/16 offline tests pass; both pages re-rendered offline from the real state and asserted for the `lang` attribute and the neutral dash; live end-to-end double-run NOT performed (this environment's network policy blocks the Kalshi and Open-Meteo hosts). See `REMEDIATION.md` for the full audit, sources, and rollback.
 - **d1.0 (2026-07-07), PHASE 1 SHIP, MODEL_VERSION `2026-07-07.d1-phase1`:** Full Phase 1 build on the Nimbus v12 chassis. Phase 0 re-verified live same day: Trace-YES now explicit in rules_secondary (corroborating the 60-day empirical proof), fee quadratic x1, NYC-only live universe, dollars-string API generation discovered and handled (`qdollar`). Engine: LST-day member precip totals from the 4-model 143-member ensemble, trace-floor probability with logged threshold curves, NBM evidence refs, divergence guard, integrity gate with quarantine, play freeze, seeded exposure caps, exact fee gate with trade-level ceil, CLV capture, Trace-aware resolution. Report: Brier model vs market, Wilson-barred calibration bins, per-city with trace counts, forecast sources Brier table, honesty tiles, deterministic day-block bootstrap ROI CI, era table, alarms. 16-test CI suite. Validation: 16/16 tests; live double-run against real Kalshi/Open-Meteo (143 members fetched, freeze held, both pages rendered); first live board correctly produced a candidate edge (NYC Jul 8: model 22.7% vs market 7.5%) and correctly refused it on thin OI (55 vs 300 floor) two hours after listing. Build incident logged: burst probing drew Kalshi 503s that a swallowed exception turned into a zero-market abort; fget now retries with backoff and series probes are spaced.
 
 ## Decision log
@@ -102,6 +105,9 @@ Contract: every reader of old records uses `.get` with fallbacks; adding a REQUI
 | 2026-07-07 | Lead 0 unlogged, lead 1-2 tradeable | partial realization from local midnight | d1 |
 | 2026-07-07 | Caps seeded from day one | Nimbus deploy-day capseed lesson, inherited | d1 |
 | 2026-07-07 | Dual-generation quote parser | KXRAIN serves dollars-string fields | d1 |
+| 2026-07-21 | `.gitignore`; purged committed `.pyc` and stray workflow file | build artifacts are not source of truth; keep the repo authored | d1.1 |
+| 2026-07-21 | `<html lang='en'>` on generated pages | WCAG 3.1.1; screen readers and translation | d1.1 |
+| 2026-07-21 | No-play P&L dash neutral, not loss-red | a sat-out day is not a loss; honesty over color noise | d1.1 |
 
 ---
 
