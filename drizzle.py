@@ -776,7 +776,7 @@ b.textContent='This board was built '+h.toFixed(0)+' hours ago. A run or deploy 
 
 
 def _page(title, body, epoch):
-    return ("<!doctype html><html><head><meta charset='utf-8'>"
+    return ("<!doctype html><html lang='en'><head><meta charset='utf-8'>"
             "<meta name='viewport' content='width=device-width,initial-scale=1'>"
             "<title>%s</title><style>%s</style></head><body>"
             "<div id='stale' class='banner'></div>%s%s</body></html>"
@@ -950,7 +950,7 @@ def render_results(state, rep):
                     r.get("exp_val", "-"),
                     (pl["side"] + " %.1fu" % pl["units"]) if pl else
                     ("gated" if r.get("gated") else ("guarded" if r.get("suppressed") else "-")),
-                    "pos" if (pl and pl["pnl"] >= 0) else "neg",
+                    ("pos" if pl["pnl"] >= 0 else "neg") if pl else "small",
                     ("%+.2fu" % (pl["pnl"] / BASE_UNIT_USD)) if pl else "-"))
     h.append("</table></div>")
     return _page("Drizzle results", "".join(h), epoch)
