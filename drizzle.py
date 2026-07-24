@@ -78,12 +78,36 @@ DAILY_UNIT_CAP = 4.0       # per target date, CUMULATIVE frozen (Nimbus capseed)
 EVENT_UNIT_CAP = 1.5       # one binary market per event; hard per-play ceiling
 
 # Rain model priors (Phase 2 learns these per city; constants pre-registered)
-T_STAR_MM      = 0.1       # member wet threshold (mm). Kept at the Phase 1
-                           # value so the logged wet-fraction curve stays
-                           # comparable across the rules change; under the new
-                           # rules the settling event is MEASURABLE precip
-                           # (>=0.01in), so T_STAR is now the leading candidate
-                           # for recalibration once the new era has settlements.
+# Member wet threshold (mm). RECALIBRATED for the new rules on 2026-07-24.
+#
+# The Phase 1 value was 0.1mm ~ 0.004in, chosen deliberately BELOW the 0.01in
+# gauge floor because trace also settled YES. That made "member > T_STAR" mean
+# "trace or more", which is exactly what the old market paid on -- and it was
+# well calibrated to it: measured against the OLD rule, mean p_raw 0.4229 vs
+# observed 0.4072, bias only +0.0157.
+#
+# The new market pays only on MEASURABLE precip (>=0.01in = 0.254mm). Scored
+# against that, the same threshold over-forecasts badly: mean p_raw 0.4229 vs
+# observed 0.2895, bias +0.1335 over 2,387 city-days (6 cities, 2025-06-19 to
+# 2026-07-21, as-issued lead-1 forecasts), over-forecasting in every bucket
+# above 0.1 and in all 6 cities. In the drizzle regime the old edge lived in
+# (0.1 <= p_raw < 0.5) it over-forecasts by 3.2x: predicted 0.239, observed
+# 0.075 -- while old-rule observed there is 0.236, essentially equal to the
+# forecast. The threshold was measuring a question Kalshi stopped asking.
+#
+# 0.254mm is the DEFINITIONAL value (the gauge floor). 1.0mm is the EMPIRICAL
+# one: it minimises Brier (0.0919 vs 0.1228) and nearly zeroes the bias
+# (+0.0112), because a grid cell is an areal average and over-produces light
+# precip against a point gauge. The extra headroom absorbs that.
+#
+# PROVISIONAL: fitted on DETERMINISTIC models as a proxy, because Open-Meteo
+# retains only ~3 days of past ensemble members, so a true EPS backtest is
+# impossible. Direction is not in doubt (same sign in all 6 cities, stable
+# across halves); the exact value is. The full wet-fraction curve is logged
+# every run at THRESHOLDS_MM precisely so live new-rule settlements can revise
+# this without a backfill. Discrimination is not the problem and the model
+# should not be discarded: AUC 0.9344.
+T_STAR_MM      = 1.0
 THRESHOLDS_MM  = [0.05, 0.1, 0.2, 0.5, 1.0, 2.0]   # logged curve for Phase 2
 # Trace no longer settles YES (Kalshi rules change 2026-07-16, see docstring).
 # The floor is therefore ZERO: adding it would price an outcome that does not

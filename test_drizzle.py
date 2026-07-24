@@ -29,7 +29,11 @@ class TestMath(unittest.TestCase):
     def test_trace_floor(self):
         # 100 members, 40 wet at t*: p_raw 0.40; trace floor 0.15 lifts the dry
         # remainder: p = 0.40 + 0.60 * 0.15 = 0.49
-        mem = [1.0] * 40 + [0.0] * 60
+        # Wet members are stated relative to T_STAR_MM, not as a literal: the
+        # threshold is a calibration knob and this test is about the floor
+        # arithmetic, not about where the threshold happens to sit today.
+        wet_mm = dz.T_STAR_MM * 5.0
+        mem = [wet_mm] * 40 + [0.0] * 60
         p_raw, p = dz.rain_prob(mem, 0.15)
         self.assertAlmostEqual(p_raw, 0.40, places=4)
         self.assertAlmostEqual(p, 0.49, places=4)
@@ -107,7 +111,7 @@ class TestPipeline(unittest.TestCase):
 
     def _members(self, wet_frac=0.55, n=120):
         wet = int(n * wet_frac)
-        mem = [2.0] * wet + [0.0] * (n - wet)
+        mem = [dz.T_STAR_MM * 5.0] * wet + [0.0] * (n - wet)
         per_model = {}
         chunk = n // 4
         for i, mdl in enumerate(dz.ENSEMBLE_MODELS):
@@ -321,10 +325,22 @@ class TestSettlementRegime(unittest.TestCase):
         self.assertEqual(dz.DEFAULT_TRACE_P, 0.0)
 
     def test_zero_floor_leaves_probability_untouched(self):
-        mem = [2.0] * 30 + [0.0] * 70
+        mem = [dz.T_STAR_MM * 5.0] * 30 + [0.0] * 70
         p_raw, p = dz.rain_prob(mem, 0.0)
         self.assertAlmostEqual(p_raw, 0.30)
         self.assertAlmostEqual(p, 0.30)   # no free probability added
+
+    def test_t_star_is_not_the_dead_rule_threshold(self):
+        # 0.1mm ~ 0.004in means 'trace or more', which is what the OLD market
+        # paid on. Under the new rules the event is measurable precip, so the
+        # threshold must sit at or above the 0.01in gauge floor (0.254mm).
+        self.assertGreaterEqual(
+            dz.T_STAR_MM, 0.254,
+            "T_STAR is back below the gauge floor: that threshold is calibrated "
+            "to the retired trace-settles-YES rule")
+        # and the curve must still be logged across thresholds so the value
+        # stays revisable from live settlements without a backfill
+        self.assertIn(dz.T_STAR_MM, dz.THRESHOLDS_MM)
 
     def test_research_mode_ships_on(self):
         # trading stays off until the new regime has its own calibration

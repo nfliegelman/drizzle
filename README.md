@@ -16,7 +16,11 @@ Sibling of [Nimbus](https://github.com/nfliegelman/nimbus), same constitution, n
 >
 > **Size of the loss:** trace days are 4.3%–14.9% of all days depending on the city (10-year GHCN base rates; median 11.8pp). That is the entire block of probability the old model was paid for, and it is gone.
 >
+> **The model was calibrated to the dead rule.** `T_STAR` was 0.1mm ≈ 0.004in, deliberately *below* the 0.01in gauge floor because trace paid — so "member wet" meant "trace or more", exactly the old settlement event. Backtested over 2,387 city-days: bias against the **old** rule **+0.016** (well calibrated), against the **new** rule **+0.134** (over-forecasts in every bucket and all 6 cities). In the drizzle regime the edge lived in, it over-forecasts by **3.2×**. `T_STAR` is now **1.0mm**, which minimises Brier and nearly zeroes the bias. Discrimination was never the problem — AUC **0.9344** — so the model is miscalibrated, not broken.
+>
 > **Consequence:** the trace floor is switched off, and the bot is in **research mode** — it publishes boards and logs every prediction so calibration rebuilds under the new rules, but **sizes no plays**. Re-enabling trading is a decision to make from the new calibration, not from the old thesis.
+>
+> **A new edge is NOT established.** The backtest shows *model* bias, not *market* mispricing. If the market anchors to NWS PoP — already defined as P(≥0.01in), already matching the new rule — there may be no edge left at all. Full evidence, limitations and the three things that would settle it: **[RULES_CHANGE.md](RULES_CHANGE.md)**.
 
 ## What you get
 - **Today's board** (`index.html`): the model vs the market for every open city. While research mode is on, this is measurement only and no plays are sized; the page says so at the top.
