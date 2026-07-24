@@ -85,19 +85,25 @@ class TestSizing(unittest.TestCase):
 class TestPipeline(unittest.TestCase):
     def setUp(self):
         self._saved = (dz.pull_rain_markets, dz.fetch_members, dz.fetch_ref,
-                       dz.fetch_settled_market, dz.fget, dz.TODAY)
+                       dz.fetch_settled_market, dz.fget, dz.TODAY, dz.RESEARCH_MODE)
         dz.fget = _no_network
+        # The sizing/freezing/capping machinery is dormant under RESEARCH_MODE
+        # but must stay under test, or it will have rotted by the time the
+        # rebuilt calibration justifies turning trading back on.
+        dz.RESEARCH_MODE = False
         self.tom = (dtm.datetime.now(dtm.timezone.utc) + dtm.timedelta(days=1)).date()
         self.day = self.tom.isoformat()
 
     def tearDown(self):
         (dz.pull_rain_markets, dz.fetch_members, dz.fetch_ref,
-         dz.fetch_settled_market, dz.fget, dz.TODAY) = self._saved
+         dz.fetch_settled_market, dz.fget, dz.TODAY, dz.RESEARCH_MODE) = self._saved
 
-    def _mkt(self, code, ok=True, station=True, yb=0.30, ya=0.32, oi=900.0, date=None):
-        return {"code": code, "series": "KXRAIN" + code, "date": date or self.tom,
-                "event_ticker": "KXRAIN%s-X" % code, "ticker": "KXRAIN%s-X-T0" % code,
-                "yb": yb, "ya": ya, "oi": oi, "structure_ok": ok, "station_ok": station}
+    def _mkt(self, code, ok=True, station=True, yb=0.30, ya=0.32, oi=900.0, date=None,
+             trace_rule=True):
+        return {"code": code, "series": dz.RAIN_SERIES, "date": date or self.tom,
+                "event_ticker": "KXRAIN-X", "ticker": "KXRAIN-X-%s" % code,
+                "yb": yb, "ya": ya, "oi": oi, "structure_ok": ok, "station_ok": station,
+                "trace_rule_ok": trace_rule}
 
     def _members(self, wet_frac=0.55, n=120):
         wet = int(n * wet_frac)
@@ -118,7 +124,8 @@ class TestPipeline(unittest.TestCase):
         thin = self._members()
         thin[0][self.day] = thin[0][self.day][:50]     # 50 pooled members
         mkts = [self._mkt("NYC"), self._mkt("SEA", ok=False),
-                self._mkt("MIA", station=False)]
+                self._mkt("MIA", station=False),
+                self._mkt("BOS", trace_rule=False)]
         def fm(lat, lon, tz, stdh):
             if abs(lat - 25.7906) < 0.01 or abs(lat - 47.4444) < 0.01:
                 return self._members()
@@ -129,12 +136,17 @@ class TestPipeline(unittest.TestCase):
         rows, plays, health = dz.score(state)
         sea = state["predictions"]["SEA|" + self.day]
         mia = state["predictions"]["MIA|" + self.day]
+        bos = state["predictions"]["BOS|" + self.day]
         self.assertEqual(sea["gated"], "market structure")
         self.assertEqual(mia["gated"], "station rules text")
+        # a city whose rules stopped saying 'trace counts as zero' is sat out:
+        # the model's whole probability definition depends on that clause
+        self.assertEqual(bos["gated"], "trace rule changed")
         self.assertEqual(sea["plays"], [])
+        self.assertEqual(bos["plays"], [])
         nyc = state["predictions"]["NYC|" + self.day]
         self.assertIsNone(nyc.get("gated"))
-        self.assertEqual(len(health["gated"]), 2)
+        self.assertEqual(len(health["gated"]), 3)
         self.assertTrue(all(v.get("cfg") == dz.CONFIG_HASH
                             for v in state["predictions"].values()))
 
@@ -274,6 +286,60 @@ class TestReport(unittest.TestCase):
         self.assertIn("edge_stated", r1)
         self.assertEqual(r1["clv"]["n"], 9)
         self.assertTrue(any(b["n"] for b in r1["bins"]))
+
+
+class TestSettlementRegime(unittest.TestCase):
+    """Guards on the 2026-07-16 Kalshi rules change.
+
+    The Phase 1 edge was 'trace settles YES'. Kalshi inverted it. These tests
+    exist so the retired trace floor cannot creep back in unnoticed, and so a
+    future flip of the rules text is caught by the suite rather than by a
+    losing position."""
+
+    NEW_RULES = ("If the total precipitation at CLINYC in New York City in Jul 24, 2026 "
+                 "is strictly greater than 0 inches, then the market resolves to Yes. "
+                 "Data for CLINYC can be found by clicking the following URL: "
+                 "https://weather.com/kalshi. “Trace” amounts (T) and missing daily "
+                 "precipitation values are counted as 0 inches.")
+    OLD_RULES = ("If the number of inches of precipitation recorded at Central Park, New "
+                 "York on July 15, 2026 is strictly greater than 0, then the market "
+                 "resolves to Yes. If the Expiration Value is T (when the target is 0) "
+                 "for Trace or R for Record, then the market resolves to Yes.")
+
+    def test_trace_rule_reads_live_text(self):
+        self.assertTrue(dz.trace_rule_ok(self.NEW_RULES))
+        # the old trace-settles-YES regime must NOT pass as the current one
+        self.assertFalse(dz.trace_rule_ok(self.OLD_RULES))
+        # unreadable/absent wording is quarantine, not consent
+        self.assertFalse(dz.trace_rule_ok(""))
+        self.assertFalse(dz.trace_rule_ok("resolves to Yes if it rains"))
+
+    def test_trace_floor_is_zero_for_every_city(self):
+        # a nonzero floor prices trace days that now settle NO
+        for code, cfg in dz.CITIES.items():
+            self.assertEqual(cfg[6], 0.0, "%s still carries a trace floor" % code)
+        self.assertEqual(dz.DEFAULT_TRACE_P, 0.0)
+
+    def test_zero_floor_leaves_probability_untouched(self):
+        mem = [2.0] * 30 + [0.0] * 70
+        p_raw, p = dz.rain_prob(mem, 0.0)
+        self.assertAlmostEqual(p_raw, 0.30)
+        self.assertAlmostEqual(p, 0.30)   # no free probability added
+
+    def test_research_mode_ships_on(self):
+        # trading stays off until the new regime has its own calibration
+        self.assertTrue(dz.RESEARCH_MODE)
+
+    def test_every_city_maps_to_a_distinct_cli_station(self):
+        stations = [cfg[5] for cfg in dz.CITIES.values()]
+        self.assertEqual(len(stations), len(set(stations)))
+        for code, cfg in dz.CITIES.items():
+            self.assertTrue(cfg[5].startswith("CLI"), code)
+            self.assertTrue(-180 <= cfg[1] <= 180 and -90 <= cfg[0] <= 90, code)
+        # the two stations that moved with the consolidation, pinned by name:
+        # forecasting the old airport would quietly mis-price both
+        self.assertEqual(dz.CITIES["CHI"][5], "CLIORD")    # O'Hare, not Midway
+        self.assertEqual(dz.CITIES["HOU"][5], "CLIIAH")    # Bush, not Hobby
 
 
 class TestState(unittest.TestCase):
