@@ -7,28 +7,57 @@ chassis on 2026-07-07. Same constitution: freeze what you claimed, quarantine
 what you exclude, cap what you risk, pre-register what you will tune, and never
 let a broken fetch publish as a quiet day.
 
-The market (verified live, Phase 0, re-verified 2026-07-07): one binary market
-per city per day, "precipitation recorded at <station> strictly greater than 0
-inches". Settlement rule, proven two independent ways: (1) empirically on 60
-joined days of Kalshi results vs the official climate record (Trace days settle
-YES 7/7, dry days settle NO 29/29, zero mismatches); (2) the live rules text
-now states it outright: an Expiration Value of T (Trace) or R (Record) resolves
-YES. The event is therefore "the gauge records ANYTHING at all", which no raw
-grid ensemble prices correctly: that gap is the whole reason this model exists.
+THE ORIGINAL THESIS IS DEAD. READ THIS BEFORE CHANGING ANYTHING.
 
-Phase 1 scope: trade lead 1-2 ONLY (a same-day rain market is partially
-realized from local midnight onward; same-day trading arrives in Phase 3 as
-observation-lock nowcasting). Calibration learning (t-star, trace floor)
-activates in Phase 2 at 30+ settlements; Phase 1 logs everything the learner
-will need, including the full member wet-fraction curve across thresholds.
+Phase 1 (2026-07-07 to 2026-07-15) traded one series per city (KXRAINNYC etc)
+whose rules said an Expiration Value of T (Trace) or R (Record) resolves YES.
+The whole edge was that the gauge records trace on days every grid ensemble
+calls dry, so YES was systematically underpriced. That was proven twice: on 60
+joined days of settlements, and in the rules text itself.
+
+On 2026-07-16 Kalshi retired those series and consolidated every city into ONE
+series, KXRAIN, with one market per city per event (KXRAIN-26JUL24-NYC). The
+new rules text INVERTS the settlement rule that the edge rested on:
+
+    "Trace amounts (T) and missing daily precipitation values are counted
+     as 0 inches."
+
+Since the payout criterion is still "strictly greater than 0 inches", a trace
+day now settles NO. It used to settle YES. Verified the same way the original
+thesis was: on 60 settled market-days of the new series, Kalshi's own results
+agree with the new rule 40/40 where gauge data was joinable, and all three
+trace days found (AUS, HOU, MIN on 2026-07-17, GHCN measurement flag "T")
+settled NO. The settlement source also moved from the NWS CLI report to The
+Weather Company feed at weather.com/kalshi.
+
+Consequence: the trace floor (p = p_raw + (1-p_raw)*trace_p) now ADDS
+probability to an outcome that no longer pays. Applying it would systematically
+overpay for YES. It is therefore set to ZERO for every city, and the rules text
+is re-verified on every run: a city whose rules do not say trace counts as zero
+is quarantined rather than traded, because that would mean the regime moved
+again.
+
+Current scope is RESEARCH MODE: the board is published and every prediction is
+logged so calibration rebuilds under the new rules, but NO plays are sized.
+Pre-2026-07-16 settlements belong to the old regime and must never be pooled
+with new ones; they are separated by model_version era in the report.
 """
 import json, math, os, sys, time, hashlib, datetime as dt
 import urllib.request, urllib.error
 from collections import defaultdict
 
 # ------------------------------ identity -------------------------------
-MODEL_VERSION = "2026-07-07.d1-phase1"
+# Era bump is mandatory, not cosmetic: the report pools settlements by
+# model_version, and pooling old-rule (trace=YES) days with new-rule
+# (trace=NO) days would silently corrupt every calibration number.
+MODEL_VERSION = "2026-07-24.d2-newrules"
 APP = "Drizzle"
+
+# RESEARCH MODE: log and publish, never size a play. On until the rebuilt
+# calibration under the new rules justifies a bet. The old edge was deleted by
+# Kalshi on 2026-07-16 (see module docstring); trading before re-measuring
+# would just be betting an inverted thesis.
+RESEARCH_MODE = True
 
 # ------------------------------- knobs ---------------------------------
 # Sizing is in UNITS end to end (owner directive 2026-07-06): no bankroll
@@ -49,11 +78,43 @@ DAILY_UNIT_CAP = 4.0       # per target date, CUMULATIVE frozen (Nimbus capseed)
 EVENT_UNIT_CAP = 1.5       # one binary market per event; hard per-play ceiling
 
 # Rain model priors (Phase 2 learns these per city; constants pre-registered)
-T_STAR_MM      = 0.1       # member wet threshold (mm). Grid QPF under-produces
-                           # drizzle; 0.1mm ~ 0.004in, deliberately below the
-                           # 0.01in CLI floor because Trace also settles YES.
+# Member wet threshold (mm). RECALIBRATED for the new rules on 2026-07-24.
+#
+# The Phase 1 value was 0.1mm ~ 0.004in, chosen deliberately BELOW the 0.01in
+# gauge floor because trace also settled YES. That made "member > T_STAR" mean
+# "trace or more", which is exactly what the old market paid on -- and it was
+# well calibrated to it: measured against the OLD rule, mean p_raw 0.4229 vs
+# observed 0.4072, bias only +0.0157.
+#
+# The new market pays only on MEASURABLE precip (>=0.01in = 0.254mm). Scored
+# against that, the same threshold over-forecasts badly: mean p_raw 0.4229 vs
+# observed 0.2895, bias +0.1335 over 2,387 city-days (6 cities, 2025-06-19 to
+# 2026-07-21, as-issued lead-1 forecasts), over-forecasting in every bucket
+# above 0.1 and in all 6 cities. In the drizzle regime the old edge lived in
+# (0.1 <= p_raw < 0.5) it over-forecasts by 3.2x: predicted 0.239, observed
+# 0.075 -- while old-rule observed there is 0.236, essentially equal to the
+# forecast. The threshold was measuring a question Kalshi stopped asking.
+#
+# 0.254mm is the DEFINITIONAL value (the gauge floor). 1.0mm is the EMPIRICAL
+# one: it minimises Brier (0.0919 vs 0.1228) and nearly zeroes the bias
+# (+0.0112), because a grid cell is an areal average and over-produces light
+# precip against a point gauge. The extra headroom absorbs that.
+#
+# PROVISIONAL: fitted on DETERMINISTIC models as a proxy, because Open-Meteo
+# retains only ~3 days of past ensemble members, so a true EPS backtest is
+# impossible. Direction is not in doubt (same sign in all 6 cities, stable
+# across halves); the exact value is. The full wet-fraction curve is logged
+# every run at THRESHOLDS_MM precisely so live new-rule settlements can revise
+# this without a backfill. Discrimination is not the problem and the model
+# should not be discarded: AUC 0.9344.
+T_STAR_MM      = 1.0
 THRESHOLDS_MM  = [0.05, 0.1, 0.2, 0.5, 1.0, 2.0]   # logged curve for Phase 2
-DEFAULT_TRACE_P = 0.10     # P(gauge records something | members dry), prior
+# Trace no longer settles YES (Kalshi rules change 2026-07-16, see docstring).
+# The floor is therefore ZERO: adding it would price an outcome that does not
+# pay. Kept as a named constant rather than deleted so the report can show the
+# retired term and the tests can assert it stays at zero while the new rules
+# hold.
+DEFAULT_TRACE_P = 0.0      # retired: trace settles NO under the KXRAIN rules
 POP_CLAMP      = 0.03      # decision prob clamped into [0.03, 0.97]
 # Uncalibrated-era humility: until a city has DIV_GUARD_MIN_N settlements, a
 # model-vs-market gap wider than DIVERGENCE_GUARD is more likely our
@@ -84,28 +145,49 @@ _cfg_blob = repr((BASE_UNIT_USD, PLAY_NET_EDGE, EDGE_1_5U, PWIN_1_5U, LONGSHOT_P
 CONFIG_HASH = hashlib.sha1(_cfg_blob.encode()).hexdigest()[:8]
 
 # ------------------------------- cities --------------------------------
-# code: (lat, lon, tz, std_offset_h, label, series generations old->new is
-# irrelevant; list is tried in order, first with open events wins, station
-# keyword must appear in the market rules text or the city is quarantined,
-# trace_p prior). Coordinates are the Kalshi settlement stations verified in
-# the Nimbus batch 1 CLI audit. Only NYC is live as of 2026-07-07; the rest
-# are dormant catalog series that auto-onboard when Kalshi lists them, each
-# gated on its rules text naming the expected station.
+# Kalshi consolidated every city into ONE series on 2026-07-16. The per-city
+# series generations (KXRAINNYC / RAINNYC ...) are dead: they still exist in
+# the catalog but have carried no open event since 2026-07-15. Cities are now
+# identified by the market ticker SUFFIX inside a shared event, e.g.
+# KXRAIN-26JUL24-NYC, so the old per-city series list is gone from this table.
+RAIN_SERIES = "KXRAIN"
+#
+# code: (lat, lon, tz, std_offset_h, label, cli_station, trace_p)
+# cli_station is the NWS CLI identifier the market rules name as the
+# settlement station; it MUST appear in rules_primary or the city is
+# quarantined. Two of these moved with the consolidation and are easy to get
+# wrong: Chicago now settles on O'Hare (CLIORD), not Midway, and Houston on
+# Bush Intercontinental (CLIIAH), not Hobby. Forecasting the old airport would
+# quietly mis-price both.
+#
+# Coordinates are the GHCN-Daily station coordinates for exactly those gauges
+# (ghcnd-stations.txt), not city centroids, so the ensemble is sampled where
+# the settling gauge actually sits.
+#
+# trace_p is 0.0 everywhere: trace settles NO under the new rules.
 CITIES = {
-    "NYC": (40.7789, -73.9692, "America/New_York", -5, "New York City",
-            ["KXRAINNYC", "RAINNYC"], "Central Park", 0.15),
-    "SEA": (47.4444, -122.3138, "America/Los_Angeles", -8, "Seattle",
-            ["KXRAINSEA", "RAINSEA"], "Seattle", 0.06),
-    "MIA": (25.7906, -80.3164, "America/New_York", -5, "Miami",
-            ["KXRAINMIA", "RAINMIA"], "Miami", 0.20),
-    "HOU": (29.6454, -95.2789, "America/Chicago", -6, "Houston",
-            ["KXRAINHOU", "RAINHOU"], "Hobby", 0.18),
-    "CHI": (41.7842, -87.7553, "America/Chicago", -6, "Chicago",
-            ["KXRAINCHI", "RAINCHI"], "Midway", 0.12),
-    "AUS": (30.1945, -97.6699, "America/Chicago", -6, "Austin",
-            ["KXRAINAUS", "RAINAUS"], "Austin", 0.12),
-    "LAX": (33.9382, -118.3866, "America/Los_Angeles", -8, "Los Angeles",
-            ["KXRAINLAX", "RAINLAX"], "Los Angeles", 0.05),
+    "NYC":  (40.7789,  -73.9692,  "America/New_York",    -5, "New York City",  "CLINYC", 0.0),
+    "CHI":  (41.9603,  -87.9317,  "America/Chicago",     -6, "Chicago",        "CLIORD", 0.0),
+    "AUS":  (30.1831,  -97.6800,  "America/Chicago",     -6, "Austin",         "CLIAUS", 0.0),
+    "MIA":  (25.7881,  -80.3169,  "America/New_York",    -5, "Miami",          "CLIMIA", 0.0),
+    "DEN":  (39.8467, -104.6561,  "America/Denver",      -7, "Denver",         "CLIDEN", 0.0),
+    "PHIL": (39.8733,  -75.2269,  "America/New_York",    -5, "Philadelphia",   "CLIPHL", 0.0),
+    "LAX":  (33.9381, -118.3867,  "America/Los_Angeles", -8, "Los Angeles",    "CLILAX", 0.0),
+    "LV":   (36.0719, -115.1633,  "America/Los_Angeles", -8, "Las Vegas",      "CLILAS", 0.0),
+    "NOLA": (29.9975,  -90.2778,  "America/Chicago",     -6, "New Orleans",    "CLIMSY", 0.0),
+    "SFO":  (37.6197, -122.3656,  "America/Los_Angeles", -8, "San Francisco",  "CLISFO", 0.0),
+    "DC":   (38.8472,  -77.0344,  "America/New_York",    -5, "Washington DC",  "CLIDCA", 0.0),
+    "SEA":  (47.4447, -122.3144,  "America/Los_Angeles", -8, "Seattle",        "CLISEA", 0.0),
+    "BOS":  (42.3606,  -71.0097,  "America/New_York",    -5, "Boston",         "CLIBOS", 0.0),
+    # Phoenix does not observe DST: America/Phoenix is -7 year round, so the
+    # LST shift in fetch_members is a no-op there by construction.
+    "PHX":  (33.4278, -112.0036,  "America/Phoenix",     -7, "Phoenix",        "CLIPHX", 0.0),
+    "ATL":  (33.6297,  -84.4422,  "America/New_York",    -5, "Atlanta",        "CLIATL", 0.0),
+    "MIN":  (44.8853,  -93.2314,  "America/Chicago",     -6, "Minneapolis",    "CLIMSP", 0.0),
+    "DAL":  (32.8975,  -97.0219,  "America/Chicago",     -6, "Dallas",         "CLIDFW", 0.0),
+    "SATX": (29.5442,  -98.4839,  "America/Chicago",     -6, "San Antonio",    "CLISAT", 0.0),
+    "HOU":  (29.9844,  -95.3608,  "America/Chicago",     -6, "Houston",        "CLIIAH", 0.0),
+    "OKC":  (35.3883,  -97.6003,  "America/Chicago",     -6, "Oklahoma City",  "CLIOKC", 0.0),
 }
 
 DOT = "\u00b7"
@@ -208,46 +290,68 @@ def state_key(code, target):
 
 # ----------------------------- data fetch ------------------------------
 
+def trace_rule_ok(rules):
+    """True when the rules text still says trace counts as ZERO.
+
+    This is the load-bearing check of the whole rewrite. The Phase 1 edge was
+    'trace settles YES'; Kalshi inverted it on 2026-07-16. If Kalshi ever
+    inverts it back, every probability this model produces is wrong again, so
+    the regime is re-read from the live text on every run instead of being
+    assumed. Unrecognised wording quarantines the city: silence is not
+    consent."""
+    r = " ".join((rules or "").lower().split())
+    says_zero = ("counted as 0 inches" in r or "counted as zero inches" in r
+                 or "count as 0 inches" in r)
+    says_yes = ("for trace" in r and "resolves to yes" in r) or \
+               ("trace" in r and "resolves to yes" in r and "counted as 0" not in r)
+    return says_zero and not says_yes
+
+
 def pull_rain_markets():
-    """Scan every city's series generations for open daily rain events.
-    Returns list of dicts; structural and rules verification happens here so
-    the gate can quarantine on hard evidence."""
+    """Pull open events from the consolidated KXRAIN series.
+
+    One event per day holds one market per city (KXRAIN-26JUL24-NYC), so the
+    city is read off the ticker SUFFIX rather than the series. Structural and
+    rules verification happens here so the gate can quarantine on hard
+    evidence, and a Kalshi city we have no coordinates for is skipped rather
+    than guessed at.
+
+    Raises on transport failure: main() must be able to tell 'Kalshi listed
+    nothing today' (legitimate, this series lists irregularly) apart from 'we
+    could not see', which must never publish as a quiet day."""
+    d = fget("https://api.elections.kalshi.com/trade-api/v2/events"
+             "?series_ticker=%s&status=open&with_nested_markets=true" % RAIN_SERIES)
+    time.sleep(0.6)   # politeness: burst probing draws Kalshi 503s
     out = []
-    for code, (lat, lon, tz, stdh, label, series_list, kw, tp) in CITIES.items():
-        for series in series_list:
-            try:
-                d = fget("https://api.elections.kalshi.com/trade-api/v2/events"
-                         "?series_ticker=%s&status=open&with_nested_markets=true" % series)
-            except Exception:
-                continue
-            finally:
-                time.sleep(0.6)   # politeness: burst probing draws Kalshi 503s
-            evs = d.get("events", [])
-            if not evs:
-                continue
-            for e in evs:
-                mkts = e.get("markets", [])
-                et = e.get("event_ticker", "")
-                try:
-                    target = parse_date_code(et.rsplit("-", 1)[-1])
-                except Exception:
-                    continue
-                structure_ok = (
-                    len(mkts) == 1
-                    and mkts[0].get("strike_type") == "greater"
-                    and float(mkts[0].get("floor_strike") or 0) == 0.0
-                )
-                m = mkts[0] if mkts else {}
-                rules = (m.get("rules_primary") or "") + " " + (m.get("rules_secondary") or "")
-                station_ok = kw.lower() in rules.lower() and "strictly greater than 0" in rules
-                out.append({
-                    "code": code, "series": series, "date": target,
-                    "event_ticker": et, "ticker": m.get("ticker", ""),
-                    "yb": qdollar(m, "yes_bid"), "ya": qdollar(m, "yes_ask"),
-                    "oi": qfloat(m, "open_interest_fp", "open_interest") or 0.0,
-                    "structure_ok": structure_ok, "station_ok": station_ok,
-                })
-            break   # first generation with open events wins for this city
+    for e in d.get("events", []):
+        et = e.get("event_ticker", "")
+        try:
+            target = parse_date_code(et.rsplit("-", 1)[-1])
+        except Exception:
+            continue
+        for m in e.get("markets", []):
+            code = (m.get("ticker", "") or "").rsplit("-", 1)[-1]
+            if code not in CITIES:
+                continue   # Kalshi added a city we have no settlement gauge for
+            station = CITIES[code][5]
+            rules_p = m.get("rules_primary") or ""
+            rules_s = m.get("rules_secondary") or ""
+            rules = rules_p + " " + rules_s
+            # Structure is now per-market inside a multi-city event: the binary
+            # must still be the 'strictly greater than 0' leg.
+            structure_ok = (m.get("strike_type") == "greater"
+                            and float(m.get("floor_strike") or 0) == 0.0)
+            traceok = trace_rule_ok(rules)
+            station_ok = (station.lower() in rules.lower()
+                          and "strictly greater than 0" in rules)
+            out.append({
+                "code": code, "series": RAIN_SERIES, "date": target,
+                "event_ticker": et, "ticker": m.get("ticker", ""),
+                "yb": qdollar(m, "yes_bid"), "ya": qdollar(m, "yes_ask"),
+                "oi": qfloat(m, "open_interest_fp", "open_interest") or 0.0,
+                "structure_ok": structure_ok, "station_ok": station_ok,
+                "trace_rule_ok": traceok,
+            })
     return out
 
 
@@ -361,8 +465,13 @@ def wet_curve(member_totals):
 def rain_prob(member_totals, trace_p):
     """p_raw = wet fraction at the T_STAR prior; final p adds the trace floor:
     P(record) = P(model wet) + P(model dry) x P(gauge records something anyway).
-    The trace floor is the whole model in one line: the gauge records trace or
-    hundredths that grid QPF calls zero."""
+
+    The floor was the whole model in one line while trace settled YES. Under
+    the rules in force since 2026-07-16 trace settles NO, so trace_p is 0 for
+    every city and this reduces to p = p_raw. The term is kept (not deleted)
+    because it is exactly what a future rules flip would need to switch back
+    on, and because the report still scores the retired 'pooled + trace floor'
+    source against the plain one."""
     n = len(member_totals)
     if n == 0:
         return None, None
@@ -419,7 +528,7 @@ def score(state):
 
     member_cache = {}
     for code, mkts in by_city.items():
-        lat, lon, tz, stdh, label, _, kw, trace_p = CITIES[code]
+        lat, lon, tz, stdh, label, station, trace_p = CITIES[code]
         try:
             if code not in member_cache:
                 member_cache[code] = (fetch_members(lat, lon, tz, stdh),
@@ -446,6 +555,12 @@ def score(state):
                 gated = "market structure"
             elif not m["station_ok"]:
                 gated = "station rules text"
+            elif not m.get("trace_rule_ok", False):
+                # The settlement regime moved out from under the model: the
+                # rules no longer say trace counts as zero. Every probability
+                # here assumes it does, so sit the city out loudly rather than
+                # price an event whose definition we can no longer read.
+                gated = "trace rule changed"
             elif len(mem) < GATE_MIN_MEMBERS:
                 gated = "thin ensemble (%d members)" % len(mem)
             elif models_present < GATE_MIN_MODELS:
@@ -520,6 +635,11 @@ def score(state):
                    "side": best[0] if best else None}
             rows.append(row)
 
+            if RESEARCH_MODE:
+                # Log the prediction (above) but never size a play: the old
+                # edge was deleted by the rules change and the new regime has
+                # no calibration yet. The board still shows model vs market.
+                continue
             if suppressed or best is None or m["oi"] < MIN_OI:
                 continue
             side, entry, p_win, net = best
@@ -805,6 +925,27 @@ def render_bets(rows, plays, health, rep):
     for f in health["failures"]:
         chips.append("<span class='chip warn'>%s</span>" % f)
     h.append("<div>%s</div>" % "".join(chips))
+    # The page must say out loud that the thesis it was built on is gone.
+    # Anyone opening this on a phone should not have to read the source to
+    # learn that no plays are coming and why.
+    if RESEARCH_MODE:
+        h.append(
+            "<div class='card'><b>Research mode %s no plays</b>"
+            "<div class='small'>Kalshi replaced the per-city rain series with "
+            "the shared KXRAIN series on 2026-07-16 and inverted the "
+            "settlement rule: &ldquo;Trace amounts (T) and missing daily "
+            "precipitation values are counted as 0 inches&rdquo;, so a trace "
+            "day now settles NO. It used to settle YES, and that was this "
+            "model's entire edge. The trace floor is switched off and no plays "
+            "are sized until calibration has been rebuilt under the new rules. "
+            "The board below is model vs market for measurement only %s do not "
+            "bet it.</div></div>" % (DOT, DOT))
+    if health.get("no_listing"):
+        h.append("<div class='card'><b>No markets listed</b><div class='small'>"
+                 "Kalshi published no open rain event for today. The KXRAIN "
+                 "series lists irregularly (2026-07-16 and 07-18 to 07-21 were "
+                 "never listed). This is an empty board, not a quiet-day "
+                 "claim and not a failed fetch.</div></div>")
     if plays:
         for p in plays:
             cls = "yes" if p["side"] == "Buy YES" else "no"
@@ -834,9 +975,11 @@ def render_bets(rows, plays, health, rep):
                     round((r["p_raw"] or 0) * 100), round((r["mid"] or 0) * 100),
                     ("%.1f\u00a2" % (r["net"] * 100)) if r["net"] is not None else "-",
                     int(r["oi"]), note))
-    h.append("</table><div class='small'>Trace floor is live: model %% includes "
-             "P(gauge records a trace) on top of the ensemble wet fraction. "
-             "Trades lead 1-2 only in Phase 1.</div>")
+    h.append("</table><div class='small'>Trace floor is RETIRED: Kalshi's rules "
+             "changed on 2026-07-16 and trace now counts as 0 inches, so a "
+             "trace day settles NO. Model %% is the plain ensemble wet "
+             "fraction with nothing added. No plays are sized while the "
+             "calibration is rebuilt under the new rules.</div>")
     return _page("Drizzle %s plays" % DOT, "".join(h), epoch)
 
 
@@ -916,8 +1059,10 @@ def render_results(state, rep):
                         "pos" if (g or 0) < 0 else "neg",
                         ("%+.4f" % g) if g is not None else "-"))
         h.append("</table><div class='small'>Negative Brier gap = model beating "
-                 "the market. Trace days are the model's entire thesis; watch "
-                 "their share against the seeded priors.</div></div>")
+                 "the market. Trace days USED to be the thesis; under the "
+                 "rules in force since 2026-07-16 they settle NO, so the trace "
+                 "column now counts days the old model would have won and the "
+                 "new one must not bet.</div></div>")
     if rep.get("sources"):
         h.append("<div class='card'><b>Forecast sources</b> <span class='small'>"
                  "Brier per source; the Phase 2 promotion decision reads from here"
@@ -1007,11 +1152,27 @@ def main():
     ci = os.environ.get("CI") == "true"
     state = load_state()
     n_res = resolve_pending(state)
-    rows, plays, health = score(state)
-    if health["markets"] == 0 and not health["failures"]:
-        print("FATAL: zero rain markets returned from Kalshi. Refusing to "
-              "publish a fake quiet day.")
+    try:
+        rows, plays, health = score(state)
+    except Exception as ex:
+        # Could not see the market at all. This is the case the original
+        # zero-market abort existed for, and it stays fatal.
+        print("FATAL: could not read the Kalshi rain series (%s). Refusing to "
+              "publish a fake quiet day." % ex)
         sys.exit(2)
+    # A successful read that returns no open events is NOT a failure: the
+    # consolidated KXRAIN series lists irregularly (2026-07-16 and 07-18..07-21
+    # were never listed at all, 404 on the event). Treating that as fatal is
+    # what kept the run red for days. Publish an explicitly empty board
+    # instead, so the page says 'Kalshi listed nothing' rather than inventing
+    # a quiet day or failing silently.
+    if health["markets"] == 0:
+        if health["failures"]:
+            print("FATAL: rain markets unreadable: %s" % "; ".join(health["failures"]))
+            sys.exit(2)
+        health["no_listing"] = True
+        print("No open rain markets listed by Kalshi for today. "
+              "Publishing an empty board (this series lists irregularly).")
     rep = compute_report(state)
     save_state(state)
     os.makedirs(DOCS_DIR, exist_ok=True)

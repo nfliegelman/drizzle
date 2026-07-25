@@ -4,28 +4,36 @@
 
 ---
 
-## Phase 0: Rules and settlement recon (COMPLETE, 2026-07-06, re-verified 07-07)
+> ## ⚠️ SUPERSEDED BY THE 2026-07-16 RULES CHANGE
+>
+> Kalshi consolidated every city into the `KXRAIN` series and inverted the settlement rule: trace now counts as 0 inches and settles **NO**. The Phase 0 finding below is a true record of the OLD market and is kept as history — it is **no longer the rules in force**. Phases 1 and 2 as originally written assumed the trace edge and have been rewritten accordingly. Full evidence: [RULES_CHANGE.md](RULES_CHANGE.md).
 
-- [x] Settlement semantics proven empirically: 60 joined days, Trace 7/7 YES, dry 29/29 NO, zero mismatches.
-- [x] Corroborated in the live rules text: Expiration Value T or R resolves YES.
-- [x] Fee structure verified (quadratic x1, same as Nimbus). Universe mapped (NYC live; SEA/MIA/legacy series dormant in catalog). Station verified for NYC (Central Park). API dollars-field generation discovered.
+## Phase 0: Rules and settlement recon (COMPLETE, 2026-07-06, re-verified 07-07 — **superseded 07-16**)
 
-## Phase 1: Paper engine, lead 1-2, fixed priors (SHIPPED 2026-07-07, this build)
+- [x] Settlement semantics proven empirically: 60 joined days, Trace 7/7 YES, dry 29/29 NO, zero mismatches. **(True of the retired per-city series. Reversed on 2026-07-16.)**
+- [x] Corroborated in the live rules text: Expiration Value T or R resolves YES. **(The live text now says the opposite.)**
+- [x] Fee structure verified (quadratic x1, same as Nimbus). Universe mapped (NYC live; SEA/MIA/legacy series dormant in catalog). Station verified for NYC (Central Park). API dollars-field generation discovered. **(Fees and the dollars-field finding still hold. The universe is now 20 cities in one series; Chicago moved to O'Hare and Houston to Bush Intercontinental.)**
 
-Everything in HANDOFF.md. The owner's only jobs now:
+## Phase 1: Paper engine, lead 1-2, fixed priors (SHIPPED 2026-07-07 — **thesis retired 2026-07-16**)
 
-- [ ] Paper trade and let settlements accumulate. With NYC-only, expect ~1 settlement/day; the Phase 2 gate (30) is roughly a month out, conveniently landing after the Israel trip.
-- [ ] Watch the **Calibration** table. The single most important readout, same as Nimbus.
-- [ ] Watch the **By city trace share** against the seeded priors (NYC 0.15). If NYC trace+small-amount days run persistently above the model's stated probabilities in the 10-30% bins, the floor is too low; below, too high. Do not hand-tune it; that is Phase 2's job with data.
-- [ ] Watch the **Forecast sources** table: pooled+floor must beat pooled raw for the thesis to be earning anything, and NBM PoP is the benchmark to beat before any promotion talk.
-- [ ] When Kalshi lists a new rain city, confirm the header shows it onboarded cleanly (not gated on station text) and spot-check the rules text yourself once.
+Ran 2026-07-07 to 07-15 and produced 8 settlements under the old rules. Those are a real record of a market that no longer exists; they are era-separated by `model_version` and must never be pooled with new-rule settlements.
 
-## Phase 2: Calibration learners (gate: 30+ non-gated settlements per city)
+## Phase 1R: Re-establish whether ANY edge exists (CURRENT, gate: nothing may trade until this answers)
+
+The old edge is gone and nothing has replaced it. `RESEARCH_MODE` is on: boards publish, predictions log, **no plays are sized**. The backtest that motivated the `T_STAR` recalibration establishes *model* bias, not *market* mispricing — those are different claims and only the second one is tradeable.
+
+- [ ] **Accumulate new-rule settlements.** 20 cities now list (when Kalshi lists at all), so this accrues far faster than the old NYC-only ~1/day. The full wet-fraction curve is logged every run, so `T_STAR` can be re-fit from live ensemble data without a backfill.
+- [ ] **Capture closing prices per market-day.** Currently missing, and it is the binding constraint: bias must be scored against what was actually tradeable. Right now six of twenty cities show a mid of exactly 0.44, which is what an empty book produces — **`mid` is not yet a market probability.**
+- [ ] **Beat NBM PoP or stop.** PoP is defined as P(≥0.01in), which *already matches the new rule*. If PoP prices this market correctly, there is no edge left and the honest move is to shut the project down. That is an acceptable outcome and should not be argued around.
+- [ ] **Re-fit `T_STAR` on live ensemble data.** The current 1.0mm is provisional, fitted on deterministic models as a proxy because Open-Meteo retains only ~3 days of past ensemble members.
+- [ ] Confirm each newly-listed city onboards cleanly (not gated) and spot-check its rules text once.
+
+## Phase 2: Calibration learners (gate: 30+ non-gated NEW-RULE settlements per city)
 
 Pre-registered design, constants already in the code (`CAL_MIN_N`, `CAL_LOOKBACK`):
 
 - [ ] **Per-city t-star:** pick the threshold from the LOGGED wet-fraction curves that minimizes Brier against realized outcomes over the lookback, out-of-sample by date split. The curve logging exists precisely so this needs zero refetching.
-- [ ] **Per-city trace floor:** replace the seeded prior with the realized P(YES | model dry) from settlements, shrunk toward the prior by n/(n+K), exactly the Nimbus shrinkage pattern. Learn the SIGN carefully: reconstruct raw from logged fields (the Nimbus batch 3 sign bug is the cautionary tale; write the unit test first).
+- [x] ~~**Per-city trace floor:** replace the seeded prior with the realized P(YES | model dry)~~ **CANCELLED 2026-07-16.** Trace settles NO, so this would learn a coefficient on an outcome that never pays. The floor is pinned at zero and a test enforces it. Revive only if the rules flip back — which `trace_rule_ok` will catch on the first run after it happens.
 - [ ] **Reliability recalibration:** if the calibration bins show a stable monotone distortion at 60+ settlements, fit a two-parameter shift-and-scale in log-odds; one knob family per checkpoint, Decision Log entry, MODEL_VERSION bump.
 - [ ] **NBM promotion decision** at 50+ ref-bearing settlements: if NBM PoP beats the pooled model on Brier with a 95% bound excluding zero at 150+ paired records, test blending; below that, keep logging only.
 - [ ] Retune governance is inherited from Nimbus verbatim: pre-registered experiments only, n-gates never lowered, at most one knob family per checkpoint, "no change" is a successful checkpoint, every change gets a Decision Log row.
@@ -46,11 +54,13 @@ Governed by Nimbus's LIVE_TRADING_SPEC entry gates wholesale (paper gate, 14-day
 
 ## Known weaknesses (honest list, keep current)
 
-- **One-city universe.** NYC-only means ~1 settlement/day: calibration gates take a month, and a single station's quirks dominate everything. More cities onboard automatically when Kalshi lists them; nothing to build, but patience is mandatory.
-- **The trace floor is a prior, not a measurement.** 0.15 for NYC comes from a 60-day summer join; winter regimes, drought stretches, and seasonality can move it. The divergence guard and Phase 2 learning are the mitigations. Expect the first live boards to lean on the floor heavily (the very first board did: raw 9%, floored 23%, market 8%).
+- **~~One-city universe~~ → 20 cities, but irregular listing.** `KXRAIN` covers 20 cities, so settlements accrue ~20x faster. The new constraint is that Kalshi lists the series irregularly: 2026-07-16 and 07-18 through 07-21 were never listed at all. An empty board is now a normal day.
+- **~~The trace floor is a prior, not a measurement.~~ RETIRED.** Trace settles NO as of 2026-07-16; the floor is zero everywhere and tested.
+- **The `T_STAR` fix is provisional.** 1.0mm was fitted on deterministic models as a proxy — a true ensemble backtest is impossible because Open-Meteo retains only ~3 days of past members. Direction is not in doubt (same sign in all 6 cities); the exact value is. Part of the measured bias is grid-cell-versus-point-gauge mismatch, not model error, and that part will not recalibrate away.
+- **No edge is currently established.** This is the headline weakness. The bot measures and does not bet, and "there is no edge left" remains a live possible answer.
 - **Wide books, thin OI at listing.** The first hours after the 14:00 UTC listing show 5c spreads and double-digit OI; the cost gate and MIN_OI will sit out many mornings. The evening board is the real board.
 - **Correlated weather.** If MIA/HOU onboard, Gulf moisture correlates their outcomes; the daily cap (4u) is the blunt tool until cross-city concordance can be measured, exactly as Nimbus batch 8 did.
-- **Rule risk.** Kalshi can change stations, thresholds, or sources; the structure and station gates catch the detectable cases. Re-verify rules text whenever a market looks off.
+- **Rule risk. This one fired, and it was the expensive kind.** On 2026-07-16 Kalshi changed the series, the settlement stations for two cities, the settlement source, AND the trace rule at once. The structure and station gates behaved correctly — they refused to publish — but nothing was watching a red run, so the boards were dark for nine days before anyone noticed. Two lessons now in the code: the trace clause is re-read from the live rules text every run (`trace_rule_ok`), and an empty listing is distinguished from an unreadable one so real breakage stays loud instead of being drowned in routine red runs. **The remaining gap is alerting: a red run still only shows up in the Actions tab.**
 - **Schedule reliability.** GitHub crons drift (measured +1.4h to +3.8h on Nimbus); off-hour minutes and the 16h stale banner mitigate. Fine for paper, unacceptable for live.
 
 ---
