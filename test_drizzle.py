@@ -13,6 +13,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import drizzle as dz
 
 
+# UTC offset the mocked fetch_members reports (US Eastern, -5h). Tests derive
+# their target dates from this so a lead is what the product would compute.
+TEST_OFFSET = -18000
+
+
 def _no_network(*a, **k):
     raise AssertionError("network call escaped the test harness")
 
@@ -95,7 +100,14 @@ class TestPipeline(unittest.TestCase):
         # but must stay under test, or it will have rotted by the time the
         # rebuilt calibration justifies turning trading back on.
         dz.RESEARCH_MODE = False
-        self.tom = (dtm.datetime.now(dtm.timezone.utc) + dtm.timedelta(days=1)).date()
+        # Dates must be derived from the SETTLEMENT STATION's local day, exactly
+        # as score() does, not from the runner's date. The runner is UTC in CI,
+        # and between 00:00 and 05:00 UTC that is a day ahead of NYC -- which
+        # silently shifted every lead in this suite by one and made the lead-0
+        # test fail depending only on what time of day CI happened to run.
+        self.local_today = (dtm.datetime.now(dtm.timezone.utc)
+                            + dtm.timedelta(seconds=TEST_OFFSET)).date()
+        self.tom = self.local_today + dtm.timedelta(days=1)   # always lead 1
         self.day = self.tom.isoformat()
 
     def tearDown(self):
@@ -116,7 +128,7 @@ class TestPipeline(unittest.TestCase):
         chunk = n // 4
         for i, mdl in enumerate(dz.ENSEMBLE_MODELS):
             per_model[mdl] = {self.day: mem[i * chunk:(i + 1) * chunk]}
-        return {self.day: mem}, -18000, per_model
+        return {self.day: mem}, TEST_OFFSET, per_model
 
     def _wire(self, mkts, members=None):
         dz.pull_rain_markets = lambda: mkts
@@ -198,11 +210,19 @@ class TestPipeline(unittest.TestCase):
         self.assertLessEqual(total, dz.DAILY_UNIT_CAP + 1e-9)
 
     def test_lead_zero_never_logged(self):
-        today_local = dtm.date.today()   # offset -18000 keeps this close enough
-        self._wire([self._mkt("NYC", date=today_local)])
+        # Pin the lead boundary from both sides at the station's local day, so
+        # this cannot pass or fail on what hour CI runs at.
+        self._wire([self._mkt("NYC", date=self.local_today)])
         state = {"predictions": {}, "resolved": []}
-        rows, plays, health = dz.score(state)
-        self.assertNotIn("NYC|" + today_local.isoformat(), state["predictions"])
+        dz.score(state)
+        self.assertNotIn("NYC|" + self.local_today.isoformat(),
+                         state["predictions"])
+        # and the very next day IS logged: the skip is lead 0, not a dead path
+        self._wire([self._mkt("NYC", date=self.tom)])
+        state = {"predictions": {}, "resolved": []}
+        dz.score(state)
+        self.assertIn("NYC|" + self.day, state["predictions"])
+        self.assertEqual(state["predictions"]["NYC|" + self.day]["lead"], 1)
 
     def test_resolution_fee_clv_and_trace(self):
         state = {"predictions": {
