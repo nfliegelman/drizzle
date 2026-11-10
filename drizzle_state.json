@@ -252,1204 +252,6 @@
    "model_version": "2026-07-24.d2-newrules",
    "cfg": "a3aa639c"
   },
-  "NYC|2026-11-09": {
-   "code": "NYC",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:55:51Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:55:51Z",
-     0.007
-    ],
-    [
-     "2026-11-09T01:09:39Z",
-     0.021
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-NYC",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:09:39Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 0.0
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.0588
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 0.0
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 0.0
-    }
-   },
-   "p_raw": 0.021,
-   "p": 0.021,
-   "curve": {
-    "0.05": 0.2657,
-    "0.1": 0.2378,
-    "0.2": 0.2168,
-    "0.5": 0.0909,
-    "1.0": 0.021,
-    "2.0": 0.0
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 0.05,
-    "nbm_pop_day": 0.334,
-    "nbm_precip": 0.0
-   },
-   "yb": 0.13,
-   "ya": 0.14,
-   "mid": 0.135,
-   "oi": 1507.54,
-   "offset": -18000,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c"
-  },
-  "CHI|2026-11-09": {
-   "code": "CHI",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:55:52Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:55:52Z",
-     0.0
-    ],
-    [
-     "2026-11-09T01:09:40Z",
-     0.0
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-CHI",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:09:40Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 0.0
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.0
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 0.0
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 0.0
-    }
-   },
-   "p_raw": 0.0,
-   "p": 0.0,
-   "curve": {
-    "0.05": 0.0,
-    "0.1": 0.0,
-    "0.2": 0.0,
-    "0.5": 0.0,
-    "1.0": 0.0,
-    "2.0": 0.0
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 0.02,
-    "nbm_pop_day": 0.049,
-    "nbm_precip": 0.0
-   },
-   "yb": 0.0,
-   "ya": 0.01,
-   "mid": 0.005,
-   "oi": 100.0,
-   "offset": -21600,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c"
-  },
-  "AUS|2026-11-09": {
-   "code": "AUS",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:55:54Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:55:54Z",
-     0.9441
-    ],
-    [
-     "2026-11-09T01:09:41Z",
-     0.9301
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-AUS",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:09:41Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 1.0
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.8627
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 1.0
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 0.8571
-    }
-   },
-   "p_raw": 0.9301,
-   "p": 0.9301,
-   "curve": {
-    "0.05": 0.972,
-    "0.1": 0.972,
-    "0.2": 0.972,
-    "0.5": 0.958,
-    "1.0": 0.9301,
-    "2.0": 0.8881
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 0.53,
-    "nbm_pop_day": 1.0,
-    "nbm_precip": 5.5
-   },
-   "yb": 0.88,
-   "ya": 0.9,
-   "mid": 0.89,
-   "oi": 1118.73,
-   "offset": -21600,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c"
-  },
-  "MIA|2026-11-09": {
-   "code": "MIA",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:55:55Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:55:55Z",
-     0.1958
-    ],
-    [
-     "2026-11-09T01:09:42Z",
-     0.3566
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-MIA",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:09:42Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 0.2581
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.7843
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 0.0
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 0.1429
-    }
-   },
-   "p_raw": 0.3566,
-   "p": 0.3566,
-   "curve": {
-    "0.05": 0.5455,
-    "0.1": 0.5245,
-    "0.2": 0.5035,
-    "0.5": 0.4615,
-    "1.0": 0.3566,
-    "2.0": 0.3007
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 0.12,
-    "nbm_pop_day": 0.713,
-    "nbm_precip": 1.1
-   },
-   "yb": 0.36,
-   "ya": 0.37,
-   "mid": 0.365,
-   "oi": 4414.4,
-   "offset": -18000,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c"
-  },
-  "DEN|2026-11-09": {
-   "code": "DEN",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:55:57Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:55:57Z",
-     0.0
-    ],
-    [
-     "2026-11-09T01:09:43Z",
-     0.0
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-DEN",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:09:43Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 0.0
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.0
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 0.0
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 0.0
-    }
-   },
-   "p_raw": 0.0,
-   "p": 0.0,
-   "curve": {
-    "0.05": 0.0,
-    "0.1": 0.0,
-    "0.2": 0.0,
-    "0.5": 0.0,
-    "1.0": 0.0,
-    "2.0": 0.0
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 0.0,
-    "nbm_pop_day": 0.0,
-    "nbm_precip": 0.0
-   },
-   "yb": 0.0,
-   "ya": 0.01,
-   "mid": 0.005,
-   "oi": 0.0,
-   "offset": -25200,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c"
-  },
-  "PHIL|2026-11-09": {
-   "code": "PHIL",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:56:41Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:56:41Z",
-     0.0
-    ],
-    [
-     "2026-11-09T01:09:44Z",
-     0.0
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-PHIL",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:09:44Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 0.0
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.0
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 0.0
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 0.0
-    }
-   },
-   "p_raw": 0.0,
-   "p": 0.0,
-   "curve": {
-    "0.05": 0.1399,
-    "0.1": 0.1329,
-    "0.2": 0.1329,
-    "0.5": 0.0,
-    "1.0": 0.0,
-    "2.0": 0.0
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 0.02,
-    "nbm_pop_day": 0.096,
-    "nbm_precip": 0.0
-   },
-   "yb": 0.01,
-   "ya": 0.02,
-   "mid": 0.015,
-   "oi": 101.01,
-   "offset": -18000,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c"
-  },
-  "LAX|2026-11-09": {
-   "code": "LAX",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:56:42Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:56:42Z",
-     0.0
-    ],
-    [
-     "2026-11-09T01:10:28Z",
-     0.0
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-LAX",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:10:28Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 0.0
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.0
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 0.0
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 0.0
-    }
-   },
-   "p_raw": 0.0,
-   "p": 0.0,
-   "curve": {
-    "0.05": 0.0,
-    "0.1": 0.0,
-    "0.2": 0.0,
-    "0.5": 0.0,
-    "1.0": 0.0,
-    "2.0": 0.0
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 0.0,
-    "nbm_pop_day": 0.0,
-    "nbm_precip": 0.0
-   },
-   "yb": 0.0,
-   "ya": 0.01,
-   "mid": 0.005,
-   "oi": 0.0,
-   "offset": -28800,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c"
-  },
-  "LV|2026-11-09": {
-   "code": "LV",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:56:44Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:56:44Z",
-     0.0
-    ],
-    [
-     "2026-11-09T01:10:28Z",
-     0.0
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-LV",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:10:28Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 0.0
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.0
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 0.0
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 0.0
-    }
-   },
-   "p_raw": 0.0,
-   "p": 0.0,
-   "curve": {
-    "0.05": 0.0,
-    "0.1": 0.0,
-    "0.2": 0.0,
-    "0.5": 0.0,
-    "1.0": 0.0,
-    "2.0": 0.0
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 0.0,
-    "nbm_pop_day": 0.0,
-    "nbm_precip": 0.0
-   },
-   "yb": 0.0,
-   "ya": 0.01,
-   "mid": 0.005,
-   "oi": 187.03,
-   "offset": -28800,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c"
-  },
-  "NOLA|2026-11-09": {
-   "code": "NOLA",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:56:46Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:56:46Z",
-     0.007
-    ],
-    [
-     "2026-11-09T01:10:30Z",
-     0.007
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-NOLA",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:10:30Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 0.0
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.0
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 0.025
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 0.0
-    }
-   },
-   "p_raw": 0.007,
-   "p": 0.007,
-   "curve": {
-    "0.05": 0.042,
-    "0.1": 0.042,
-    "0.2": 0.035,
-    "0.5": 0.014,
-    "1.0": 0.007,
-    "2.0": 0.0
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 0.02,
-    "nbm_pop_day": 0.231,
-    "nbm_precip": 0.0
-   },
-   "yb": 0.02,
-   "ya": 0.03,
-   "mid": 0.025,
-   "oi": 998.63,
-   "offset": -21600,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c"
-  },
-  "SFO|2026-11-09": {
-   "code": "SFO",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:57:29Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:57:29Z",
-     0.0
-    ],
-    [
-     "2026-11-09T01:10:31Z",
-     0.0
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-SFO",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:10:31Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 0.0
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.0
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 0.0
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 0.0
-    }
-   },
-   "p_raw": 0.0,
-   "p": 0.0,
-   "curve": {
-    "0.05": 0.0,
-    "0.1": 0.0,
-    "0.2": 0.0,
-    "0.5": 0.0,
-    "1.0": 0.0,
-    "2.0": 0.0
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 0.0,
-    "nbm_pop_day": 0.0,
-    "nbm_precip": 0.0
-   },
-   "yb": 0.0,
-   "ya": 0.01,
-   "mid": 0.005,
-   "oi": 1040.1,
-   "offset": -28800,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c"
-  },
-  "DC|2026-11-09": {
-   "code": "DC",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:57:45Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:57:45Z",
-     0.0
-    ],
-    [
-     "2026-11-09T01:10:31Z",
-     0.0
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-DC",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:10:31Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 0.0
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.0
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 0.0
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 0.0
-    }
-   },
-   "p_raw": 0.0,
-   "p": 0.0,
-   "curve": {
-    "0.05": 0.0,
-    "0.1": 0.0,
-    "0.2": 0.0,
-    "0.5": 0.0,
-    "1.0": 0.0,
-    "2.0": 0.0
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 0.0,
-    "nbm_pop_day": 0.0,
-    "nbm_precip": 0.0
-   },
-   "yb": 0.0,
-   "ya": 0.01,
-   "mid": 0.005,
-   "oi": 93.51,
-   "offset": -18000,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c"
-  },
-  "SEA|2026-11-09": {
-   "code": "SEA",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:57:46Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:57:46Z",
-     1.0
-    ],
-    [
-     "2026-11-09T01:10:32Z",
-     1.0
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-SEA",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:10:32Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 1.0
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 1.0
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 1.0
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 1.0
-    }
-   },
-   "p_raw": 1.0,
-   "p": 1.0,
-   "curve": {
-    "0.05": 1.0,
-    "0.1": 1.0,
-    "0.2": 1.0,
-    "0.5": 1.0,
-    "1.0": 1.0,
-    "2.0": 1.0
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 1.0,
-    "nbm_pop_day": 1.0,
-    "nbm_precip": 6.0
-   },
-   "yb": 0.94,
-   "ya": 0.96,
-   "mid": 0.95,
-   "oi": 1051.85,
-   "offset": -28800,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c"
-  },
-  "BOS|2026-11-09": {
-   "code": "BOS",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:57:47Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:57:47Z",
-     0.1259
-    ],
-    [
-     "2026-11-09T01:10:34Z",
-     0.1538
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-BOS",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:10:34Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 0.0
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.2157
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 0.275
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 0.0
-    }
-   },
-   "p_raw": 0.1538,
-   "p": 0.1538,
-   "curve": {
-    "0.05": 0.6014,
-    "0.1": 0.5594,
-    "0.2": 0.5035,
-    "0.5": 0.3357,
-    "1.0": 0.1538,
-    "2.0": 0.021
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 0.09,
-    "nbm_pop_day": 0.537,
-    "nbm_precip": 0.0
-   },
-   "yb": 0.23,
-   "ya": 0.24,
-   "mid": 0.235,
-   "oi": 2614.4,
-   "offset": -18000,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c"
-  },
-  "ATL|2026-11-09": {
-   "code": "ATL",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:57:49Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:57:49Z",
-     0.0
-    ],
-    [
-     "2026-11-09T01:10:35Z",
-     0.0
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-ATL",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:10:35Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 0.0
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.0
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 0.0
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 0.0
-    }
-   },
-   "p_raw": 0.0,
-   "p": 0.0,
-   "curve": {
-    "0.05": 0.0,
-    "0.1": 0.0,
-    "0.2": 0.0,
-    "0.5": 0.0,
-    "1.0": 0.0,
-    "2.0": 0.0
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 0.0,
-    "nbm_pop_day": 0.0,
-    "nbm_precip": 0.0
-   },
-   "yb": 0.0,
-   "ya": 0.01,
-   "mid": 0.005,
-   "oi": 0.0,
-   "offset": -18000,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c"
-  },
-  "MIN|2026-11-09": {
-   "code": "MIN",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:57:50Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:57:50Z",
-     0.0
-    ],
-    [
-     "2026-11-09T01:11:18Z",
-     0.0
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-MIN",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:11:18Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 0.0
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.0
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 0.0
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 0.0
-    }
-   },
-   "p_raw": 0.0,
-   "p": 0.0,
-   "curve": {
-    "0.05": 0.0,
-    "0.1": 0.0,
-    "0.2": 0.0,
-    "0.5": 0.0,
-    "1.0": 0.0,
-    "2.0": 0.0
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 0.02,
-    "nbm_pop_day": 0.14,
-    "nbm_precip": 0.0
-   },
-   "yb": 0.01,
-   "ya": 0.02,
-   "mid": 0.015,
-   "oi": 228.39,
-   "offset": -21600,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c"
-  },
-  "DAL|2026-11-09": {
-   "code": "DAL",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:57:52Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:57:52Z",
-     0.1608
-    ],
-    [
-     "2026-11-09T01:11:19Z",
-     0.1049
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-DAL",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:11:19Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 0.2258
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.098
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 0.075
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 0.0
-    }
-   },
-   "p_raw": 0.1049,
-   "p": 0.1049,
-   "curve": {
-    "0.05": 0.3776,
-    "0.1": 0.3566,
-    "0.2": 0.3077,
-    "0.5": 0.1958,
-    "1.0": 0.1049,
-    "2.0": 0.035
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 0.07,
-    "nbm_pop_day": 0.544,
-    "nbm_precip": 0.0
-   },
-   "yb": 0.14,
-   "ya": 0.16,
-   "mid": 0.15,
-   "oi": 1857.6,
-   "offset": -21600,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c"
-  },
-  "SATX|2026-11-09": {
-   "code": "SATX",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:58:35Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:58:35Z",
-     1.0
-    ],
-    [
-     "2026-11-09T01:11:23Z",
-     0.986
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-SATX",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:11:23Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 1.0
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.9608
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 1.0
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 1.0
-    }
-   },
-   "p_raw": 0.986,
-   "p": 0.986,
-   "curve": {
-    "0.05": 1.0,
-    "0.1": 1.0,
-    "0.2": 1.0,
-    "0.5": 0.993,
-    "1.0": 0.986,
-    "2.0": 0.986
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 0.68,
-    "nbm_pop_day": 1.0,
-    "nbm_precip": 29.2
-   },
-   "yb": 0.97,
-   "ya": 0.98,
-   "mid": 0.975,
-   "oi": 916.55,
-   "offset": -21600,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c"
-  },
-  "HOU|2026-11-09": {
-   "code": "HOU",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:58:37Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:58:37Z",
-     0.7133
-    ],
-    [
-     "2026-11-09T01:11:24Z",
-     0.6154
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-HOU",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:11:24Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 0.9355
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.5098
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 0.55
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 0.5238
-    }
-   },
-   "p_raw": 0.6154,
-   "p": 0.6154,
-   "curve": {
-    "0.05": 0.8252,
-    "0.1": 0.7902,
-    "0.2": 0.7762,
-    "0.5": 0.7203,
-    "1.0": 0.6154,
-    "2.0": 0.4965
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 0.41,
-    "nbm_pop_day": 0.977,
-    "nbm_precip": 3.0
-   },
-   "yb": 0.77,
-   "ya": 0.78,
-   "mid": 0.775,
-   "oi": 2267.92,
-   "offset": -21600,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c",
-   "gated": "station rules text"
-  },
-  "OKC|2026-11-09": {
-   "code": "OKC",
-   "target": "2026-11-09",
-   "first_logged": "2026-11-08T17:58:38Z",
-   "plays": [],
-   "p_hist": [
-    [
-     "2026-11-08T17:58:38Z",
-     0.0
-    ],
-    [
-     "2026-11-09T01:12:10Z",
-     0.0
-    ]
-   ],
-   "event_ticker": "KXRAIN-26NOV09",
-   "ticker": "KXRAIN-26NOV09-OKC",
-   "series": "KXRAIN",
-   "logged_at": "2026-11-09T01:12:10Z",
-   "lead": 1,
-   "members": 143,
-   "models": {
-    "gfs025": {
-     "n": 31,
-     "wet": 0.0
-    },
-    "ecmwf_ifs025": {
-     "n": 51,
-     "wet": 0.0
-    },
-    "icon_seamless": {
-     "n": 40,
-     "wet": 0.0
-    },
-    "gem_global": {
-     "n": 21,
-     "wet": 0.0
-    }
-   },
-   "p_raw": 0.0,
-   "p": 0.0,
-   "curve": {
-    "0.05": 0.0,
-    "0.1": 0.0,
-    "0.2": 0.0,
-    "0.5": 0.0,
-    "1.0": 0.0,
-    "2.0": 0.0
-   },
-   "trace_p": 0.0,
-   "ref": {
-    "nbm_pop_max": 0.0,
-    "nbm_pop_day": 0.0,
-    "nbm_precip": 0.0
-   },
-   "yb": 0.0,
-   "ya": 0.01,
-   "mid": 0.005,
-   "oi": 0.93,
-   "offset": -21600,
-   "model_version": "2026-07-24.d2-newrules",
-   "cfg": "a3aa639c"
-  },
   "NYC|2026-11-10": {
    "code": "NYC",
    "target": "2026-11-10",
@@ -2644,6 +1446,1128 @@
    "ya": 0.03,
    "mid": 0.025,
    "oi": 570.11,
+   "offset": -21600,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c"
+  },
+  "NYC|2026-11-11": {
+   "code": "NYC",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:44:04Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:44:04Z",
+     0.0
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-NYC",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:44:04Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "p_raw": 0.0,
+   "p": 0.0,
+   "curve": {
+    "0.05": 0.007,
+    "0.1": 0.0,
+    "0.2": 0.0,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.02,
+    "nbm_pop_day": 0.087,
+    "nbm_precip": 0.0
+   },
+   "yb": 0.01,
+   "ya": 0.02,
+   "mid": 0.015,
+   "oi": 1462.06,
+   "offset": -18000,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c"
+  },
+  "CHI|2026-11-11": {
+   "code": "CHI",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:44:04Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:44:04Z",
+     0.5245
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-CHI",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:44:04Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.5161
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.6078
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.325
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.7143
+    }
+   },
+   "p_raw": 0.5245,
+   "p": 0.5245,
+   "curve": {
+    "0.05": 0.8392,
+    "0.1": 0.8042,
+    "0.2": 0.7902,
+    "0.5": 0.7063,
+    "1.0": 0.5245,
+    "2.0": 0.3427
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.36,
+    "nbm_pop_day": 0.916,
+    "nbm_precip": 0.6
+   },
+   "yb": 0.66,
+   "ya": 0.67,
+   "mid": 0.665,
+   "oi": 1465.83,
+   "offset": -21600,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c"
+  },
+  "AUS|2026-11-11": {
+   "code": "AUS",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:44:05Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:44:05Z",
+     0.028
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-AUS",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:44:05Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.1905
+    }
+   },
+   "p_raw": 0.028,
+   "p": 0.028,
+   "curve": {
+    "0.05": 0.1329,
+    "0.1": 0.0909,
+    "0.2": 0.0769,
+    "0.5": 0.049,
+    "1.0": 0.028,
+    "2.0": 0.028
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.01,
+    "nbm_pop_day": 0.182,
+    "nbm_precip": 0.0
+   },
+   "yb": 0.02,
+   "ya": 0.03,
+   "mid": 0.025,
+   "oi": 762.28,
+   "offset": -21600,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c"
+  },
+  "MIA|2026-11-11": {
+   "code": "MIA",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:44:06Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:44:06Z",
+     0.5594
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-MIA",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:44:06Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.2581
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.7059
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.475
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.8095
+    }
+   },
+   "p_raw": 0.5594,
+   "p": 0.5594,
+   "curve": {
+    "0.05": 0.8112,
+    "0.1": 0.7972,
+    "0.2": 0.7552,
+    "0.5": 0.6434,
+    "1.0": 0.5594,
+    "2.0": 0.3706
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.37,
+    "nbm_pop_day": 0.958,
+    "nbm_precip": 17.8
+   },
+   "yb": 0.56,
+   "ya": 0.57,
+   "mid": 0.565,
+   "oi": 1498.77,
+   "offset": -18000,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c"
+  },
+  "DEN|2026-11-11": {
+   "code": "DEN",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:44:07Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:44:07Z",
+     0.0
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-DEN",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:44:07Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "p_raw": 0.0,
+   "p": 0.0,
+   "curve": {
+    "0.05": 0.0,
+    "0.1": 0.0,
+    "0.2": 0.0,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.0,
+    "nbm_pop_day": 0.0,
+    "nbm_precip": 0.0
+   },
+   "yb": 0.0,
+   "ya": 0.01,
+   "mid": 0.005,
+   "oi": 100.0,
+   "offset": -25200,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c"
+  },
+  "PHIL|2026-11-11": {
+   "code": "PHIL",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:44:08Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:44:08Z",
+     0.0
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-PHIL",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:44:08Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "p_raw": 0.0,
+   "p": 0.0,
+   "curve": {
+    "0.05": 0.0,
+    "0.1": 0.0,
+    "0.2": 0.0,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.04,
+    "nbm_pop_day": 0.167,
+    "nbm_precip": 0.0
+   },
+   "yb": 0.01,
+   "ya": 0.02,
+   "mid": 0.015,
+   "oi": 405.96,
+   "offset": -18000,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c"
+  },
+  "LAX|2026-11-11": {
+   "code": "LAX",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:44:09Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:44:09Z",
+     0.0
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-LAX",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:44:09Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "p_raw": 0.0,
+   "p": 0.0,
+   "curve": {
+    "0.05": 0.0,
+    "0.1": 0.0,
+    "0.2": 0.0,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.0,
+    "nbm_pop_day": 0.0,
+    "nbm_precip": 0.0
+   },
+   "yb": 0.0,
+   "ya": 0.01,
+   "mid": 0.005,
+   "oi": 100.0,
+   "offset": -28800,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c"
+  },
+  "LV|2026-11-11": {
+   "code": "LV",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:44:10Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:44:10Z",
+     0.0
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-LV",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:44:10Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "p_raw": 0.0,
+   "p": 0.0,
+   "curve": {
+    "0.05": 0.0,
+    "0.1": 0.0,
+    "0.2": 0.0,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.0,
+    "nbm_pop_day": 0.0,
+    "nbm_precip": 0.0
+   },
+   "yb": 0.0,
+   "ya": 0.01,
+   "mid": 0.005,
+   "oi": 0.0,
+   "offset": -28800,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c"
+  },
+  "NOLA|2026-11-11": {
+   "code": "NOLA",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:44:53Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:44:53Z",
+     0.6643
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-NOLA",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:44:53Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.6129
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.7255
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.65
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.619
+    }
+   },
+   "p_raw": 0.6643,
+   "p": 0.6643,
+   "curve": {
+    "0.05": 0.965,
+    "0.1": 0.965,
+    "0.2": 0.958,
+    "0.5": 0.8881,
+    "1.0": 0.6643,
+    "2.0": 0.4685
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.29,
+    "nbm_pop_day": 0.916,
+    "nbm_precip": 1.2
+   },
+   "yb": 0.69,
+   "ya": 0.7,
+   "mid": 0.695,
+   "oi": 1167.78,
+   "offset": -21600,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c"
+  },
+  "SFO|2026-11-11": {
+   "code": "SFO",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:44:54Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:44:54Z",
+     0.0
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-SFO",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:44:54Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "p_raw": 0.0,
+   "p": 0.0,
+   "curve": {
+    "0.05": 0.0,
+    "0.1": 0.0,
+    "0.2": 0.0,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.0,
+    "nbm_pop_day": 0.0,
+    "nbm_precip": 0.0
+   },
+   "yb": 0.01,
+   "ya": 0.02,
+   "mid": 0.015,
+   "oi": 1001.0,
+   "offset": -28800,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c"
+  },
+  "DC|2026-11-11": {
+   "code": "DC",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:44:55Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:44:55Z",
+     0.0
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-DC",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:44:55Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "p_raw": 0.0,
+   "p": 0.0,
+   "curve": {
+    "0.05": 0.014,
+    "0.1": 0.007,
+    "0.2": 0.007,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.02,
+    "nbm_pop_day": 0.223,
+    "nbm_precip": 0.0
+   },
+   "yb": 0.01,
+   "ya": 0.03,
+   "mid": 0.02,
+   "oi": 397.0,
+   "offset": -18000,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c"
+  },
+  "SEA|2026-11-11": {
+   "code": "SEA",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:44:56Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:44:56Z",
+     0.1329
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-SEA",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:44:56Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.2157
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.15
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0952
+    }
+   },
+   "p_raw": 0.1329,
+   "p": 0.1329,
+   "curve": {
+    "0.05": 0.3427,
+    "0.1": 0.2937,
+    "0.2": 0.2657,
+    "0.5": 0.1958,
+    "1.0": 0.1329,
+    "2.0": 0.0699
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.09,
+    "nbm_pop_day": 0.639,
+    "nbm_precip": 0.1
+   },
+   "yb": 0.12,
+   "ya": 0.13,
+   "mid": 0.125,
+   "oi": 999.18,
+   "offset": -28800,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c"
+  },
+  "BOS|2026-11-11": {
+   "code": "BOS",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:44:57Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:44:57Z",
+     0.0
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-BOS",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:44:57Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "p_raw": 0.0,
+   "p": 0.0,
+   "curve": {
+    "0.05": 0.042,
+    "0.1": 0.021,
+    "0.2": 0.014,
+    "0.5": 0.007,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.03,
+    "nbm_pop_day": 0.166,
+    "nbm_precip": 0.0
+   },
+   "yb": 0.01,
+   "ya": 0.02,
+   "mid": 0.015,
+   "oi": 181.76,
+   "offset": -18000,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c"
+  },
+  "ATL|2026-11-11": {
+   "code": "ATL",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:44:58Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:44:58Z",
+     0.014
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-ATL",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:44:58Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0196
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.025
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "p_raw": 0.014,
+   "p": 0.014,
+   "curve": {
+    "0.05": 0.2867,
+    "0.1": 0.1608,
+    "0.2": 0.1329,
+    "0.5": 0.0559,
+    "1.0": 0.014,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.14,
+    "nbm_pop_day": 0.345,
+    "nbm_precip": 0.5
+   },
+   "yb": 0.2,
+   "ya": 0.21,
+   "mid": 0.205,
+   "oi": 3327.69,
+   "offset": -18000,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c"
+  },
+  "MIN|2026-11-11": {
+   "code": "MIN",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:45:41Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:45:41Z",
+     0.0769
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-MIN",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:45:41Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.098
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.075
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.1429
+    }
+   },
+   "p_raw": 0.0769,
+   "p": 0.0769,
+   "curve": {
+    "0.05": 0.5804,
+    "0.1": 0.5664,
+    "0.2": 0.5175,
+    "0.5": 0.2448,
+    "1.0": 0.0769,
+    "2.0": 0.014
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.1,
+    "nbm_pop_day": 0.531,
+    "nbm_precip": 0.0
+   },
+   "yb": 0.15,
+   "ya": 0.16,
+   "mid": 0.155,
+   "oi": 1993.99,
+   "offset": -21600,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c"
+  },
+  "DAL|2026-11-11": {
+   "code": "DAL",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:45:42Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:45:42Z",
+     0.0
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-DAL",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:45:42Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "p_raw": 0.0,
+   "p": 0.0,
+   "curve": {
+    "0.05": 0.042,
+    "0.1": 0.021,
+    "0.2": 0.007,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.03,
+    "nbm_pop_day": 0.191,
+    "nbm_precip": 0.0
+   },
+   "yb": 0.01,
+   "ya": 0.02,
+   "mid": 0.015,
+   "oi": 165.7,
+   "offset": -21600,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c"
+  },
+  "SATX|2026-11-11": {
+   "code": "SATX",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:45:43Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:45:43Z",
+     0.021
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-SATX",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:45:43Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.1429
+    }
+   },
+   "p_raw": 0.021,
+   "p": 0.021,
+   "curve": {
+    "0.05": 0.0769,
+    "0.1": 0.0629,
+    "0.2": 0.0629,
+    "0.5": 0.042,
+    "1.0": 0.021,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.01,
+    "nbm_pop_day": 0.165,
+    "nbm_precip": 0.0
+   },
+   "yb": 0.01,
+   "ya": 0.03,
+   "mid": 0.02,
+   "oi": 522.84,
+   "offset": -21600,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c"
+  },
+  "HOU|2026-11-11": {
+   "code": "HOU",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:45:44Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:45:44Z",
+     0.8182
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-HOU",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:45:44Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.7097
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.7059
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 1.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.9048
+    }
+   },
+   "p_raw": 0.8182,
+   "p": 0.8182,
+   "curve": {
+    "0.05": 0.979,
+    "0.1": 0.972,
+    "0.2": 0.951,
+    "0.5": 0.9021,
+    "1.0": 0.8182,
+    "2.0": 0.6643
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.51,
+    "nbm_pop_day": 0.969,
+    "nbm_precip": 6.1
+   },
+   "yb": 0.85,
+   "ya": 0.86,
+   "mid": 0.855,
+   "oi": 1113.41,
+   "offset": -21600,
+   "model_version": "2026-07-24.d2-newrules",
+   "cfg": "a3aa639c",
+   "gated": "station rules text"
+  },
+  "OKC|2026-11-11": {
+   "code": "OKC",
+   "target": "2026-11-11",
+   "first_logged": "2026-11-10T19:45:45Z",
+   "plays": [],
+   "p_hist": [
+    [
+     "2026-11-10T19:45:45Z",
+     0.0
+    ]
+   ],
+   "event_ticker": "KXRAIN-26NOV11",
+   "ticker": "KXRAIN-26NOV11-OKC",
+   "series": "KXRAIN",
+   "logged_at": "2026-11-10T19:45:45Z",
+   "lead": 1,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "p_raw": 0.0,
+   "p": 0.0,
+   "curve": {
+    "0.05": 0.0,
+    "0.1": 0.0,
+    "0.2": 0.0,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "ref": {
+    "nbm_pop_max": 0.0,
+    "nbm_pop_day": 0.0,
+    "nbm_precip": 0.0
+   },
+   "yb": 0.0,
+   "ya": 0.01,
+   "mid": 0.005,
+   "oi": 522.0,
    "offset": -21600,
    "model_version": "2026-07-24.d2-newrules",
    "cfg": "a3aa639c"
@@ -128391,6 +128315,1128 @@
     ],
     [
      "2026-11-08T00:54:59Z",
+     0.0
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "NYC",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 0,
+   "exp_val": "0.00",
+   "amount": 0.0,
+   "trace": false,
+   "p": 0.021,
+   "p_raw": 0.021,
+   "curve": {
+    "0.05": 0.2657,
+    "0.1": 0.2378,
+    "0.2": 0.2168,
+    "0.5": 0.0909,
+    "1.0": 0.021,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0588
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.05,
+    "nbm_pop_day": 0.334,
+    "nbm_precip": 0.0
+   },
+   "mid": 0.135,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:55:51Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:55:51Z",
+     0.007
+    ],
+    [
+     "2026-11-09T01:09:39Z",
+     0.021
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "CHI",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 0,
+   "exp_val": "0.00",
+   "amount": 0.0,
+   "trace": false,
+   "p": 0.0,
+   "p_raw": 0.0,
+   "curve": {
+    "0.05": 0.0,
+    "0.1": 0.0,
+    "0.2": 0.0,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.02,
+    "nbm_pop_day": 0.049,
+    "nbm_precip": 0.0
+   },
+   "mid": 0.005,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:55:52Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:55:52Z",
+     0.0
+    ],
+    [
+     "2026-11-09T01:09:40Z",
+     0.0
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "AUS",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 1,
+   "exp_val": "0.06",
+   "amount": 0.06,
+   "trace": false,
+   "p": 0.9301,
+   "p_raw": 0.9301,
+   "curve": {
+    "0.05": 0.972,
+    "0.1": 0.972,
+    "0.2": 0.972,
+    "0.5": 0.958,
+    "1.0": 0.9301,
+    "2.0": 0.8881
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 1.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.8627
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 1.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.8571
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.53,
+    "nbm_pop_day": 1.0,
+    "nbm_precip": 5.5
+   },
+   "mid": 0.89,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:55:54Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:55:54Z",
+     0.9441
+    ],
+    [
+     "2026-11-09T01:09:41Z",
+     0.9301
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "MIA",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 0,
+   "exp_val": "0.00",
+   "amount": 0.0,
+   "trace": false,
+   "p": 0.3566,
+   "p_raw": 0.3566,
+   "curve": {
+    "0.05": 0.5455,
+    "0.1": 0.5245,
+    "0.2": 0.5035,
+    "0.5": 0.4615,
+    "1.0": 0.3566,
+    "2.0": 0.3007
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.2581
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.7843
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.1429
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.12,
+    "nbm_pop_day": 0.713,
+    "nbm_precip": 1.1
+   },
+   "mid": 0.365,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:55:55Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:55:55Z",
+     0.1958
+    ],
+    [
+     "2026-11-09T01:09:42Z",
+     0.3566
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "DEN",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 0,
+   "exp_val": "0.00",
+   "amount": 0.0,
+   "trace": false,
+   "p": 0.0,
+   "p_raw": 0.0,
+   "curve": {
+    "0.05": 0.0,
+    "0.1": 0.0,
+    "0.2": 0.0,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.0,
+    "nbm_pop_day": 0.0,
+    "nbm_precip": 0.0
+   },
+   "mid": 0.005,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:55:57Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:55:57Z",
+     0.0
+    ],
+    [
+     "2026-11-09T01:09:43Z",
+     0.0
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "PHIL",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 0,
+   "exp_val": "0.00",
+   "amount": 0.0,
+   "trace": false,
+   "p": 0.0,
+   "p_raw": 0.0,
+   "curve": {
+    "0.05": 0.1399,
+    "0.1": 0.1329,
+    "0.2": 0.1329,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.02,
+    "nbm_pop_day": 0.096,
+    "nbm_precip": 0.0
+   },
+   "mid": 0.015,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:56:41Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:56:41Z",
+     0.0
+    ],
+    [
+     "2026-11-09T01:09:44Z",
+     0.0
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "LAX",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 0,
+   "exp_val": "0.00",
+   "amount": 0.0,
+   "trace": false,
+   "p": 0.0,
+   "p_raw": 0.0,
+   "curve": {
+    "0.05": 0.0,
+    "0.1": 0.0,
+    "0.2": 0.0,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.0,
+    "nbm_pop_day": 0.0,
+    "nbm_precip": 0.0
+   },
+   "mid": 0.005,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:56:42Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:56:42Z",
+     0.0
+    ],
+    [
+     "2026-11-09T01:10:28Z",
+     0.0
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "LV",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 0,
+   "exp_val": "0.00",
+   "amount": 0.0,
+   "trace": false,
+   "p": 0.0,
+   "p_raw": 0.0,
+   "curve": {
+    "0.05": 0.0,
+    "0.1": 0.0,
+    "0.2": 0.0,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.0,
+    "nbm_pop_day": 0.0,
+    "nbm_precip": 0.0
+   },
+   "mid": 0.005,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:56:44Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:56:44Z",
+     0.0
+    ],
+    [
+     "2026-11-09T01:10:28Z",
+     0.0
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "NOLA",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 0,
+   "exp_val": "0.00",
+   "amount": 0.0,
+   "trace": false,
+   "p": 0.007,
+   "p_raw": 0.007,
+   "curve": {
+    "0.05": 0.042,
+    "0.1": 0.042,
+    "0.2": 0.035,
+    "0.5": 0.014,
+    "1.0": 0.007,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.025
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.02,
+    "nbm_pop_day": 0.231,
+    "nbm_precip": 0.0
+   },
+   "mid": 0.025,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:56:46Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:56:46Z",
+     0.007
+    ],
+    [
+     "2026-11-09T01:10:30Z",
+     0.007
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "SFO",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 0,
+   "exp_val": "0.00",
+   "amount": 0.0,
+   "trace": false,
+   "p": 0.0,
+   "p_raw": 0.0,
+   "curve": {
+    "0.05": 0.0,
+    "0.1": 0.0,
+    "0.2": 0.0,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.0,
+    "nbm_pop_day": 0.0,
+    "nbm_precip": 0.0
+   },
+   "mid": 0.005,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:57:29Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:57:29Z",
+     0.0
+    ],
+    [
+     "2026-11-09T01:10:31Z",
+     0.0
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "DC",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 0,
+   "exp_val": "0.00",
+   "amount": 0.0,
+   "trace": false,
+   "p": 0.0,
+   "p_raw": 0.0,
+   "curve": {
+    "0.05": 0.0,
+    "0.1": 0.0,
+    "0.2": 0.0,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.0,
+    "nbm_pop_day": 0.0,
+    "nbm_precip": 0.0
+   },
+   "mid": 0.005,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:57:45Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:57:45Z",
+     0.0
+    ],
+    [
+     "2026-11-09T01:10:31Z",
+     0.0
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "SEA",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 1,
+   "exp_val": "0.48",
+   "amount": 0.48,
+   "trace": false,
+   "p": 1.0,
+   "p_raw": 1.0,
+   "curve": {
+    "0.05": 1.0,
+    "0.1": 1.0,
+    "0.2": 1.0,
+    "0.5": 1.0,
+    "1.0": 1.0,
+    "2.0": 1.0
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 1.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 1.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 1.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 1.0
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 1.0,
+    "nbm_pop_day": 1.0,
+    "nbm_precip": 6.0
+   },
+   "mid": 0.95,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:57:46Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:57:46Z",
+     1.0
+    ],
+    [
+     "2026-11-09T01:10:32Z",
+     1.0
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "BOS",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 0,
+   "exp_val": "0.00",
+   "amount": 0.0,
+   "trace": false,
+   "p": 0.1538,
+   "p_raw": 0.1538,
+   "curve": {
+    "0.05": 0.6014,
+    "0.1": 0.5594,
+    "0.2": 0.5035,
+    "0.5": 0.3357,
+    "1.0": 0.1538,
+    "2.0": 0.021
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.2157
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.275
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.09,
+    "nbm_pop_day": 0.537,
+    "nbm_precip": 0.0
+   },
+   "mid": 0.235,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:57:47Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:57:47Z",
+     0.1259
+    ],
+    [
+     "2026-11-09T01:10:34Z",
+     0.1538
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "ATL",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 0,
+   "exp_val": "0.00",
+   "amount": 0.0,
+   "trace": false,
+   "p": 0.0,
+   "p_raw": 0.0,
+   "curve": {
+    "0.05": 0.0,
+    "0.1": 0.0,
+    "0.2": 0.0,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.0,
+    "nbm_pop_day": 0.0,
+    "nbm_precip": 0.0
+   },
+   "mid": 0.005,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:57:49Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:57:49Z",
+     0.0
+    ],
+    [
+     "2026-11-09T01:10:35Z",
+     0.0
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "MIN",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 0,
+   "exp_val": "0.00",
+   "amount": 0.0,
+   "trace": false,
+   "p": 0.0,
+   "p_raw": 0.0,
+   "curve": {
+    "0.05": 0.0,
+    "0.1": 0.0,
+    "0.2": 0.0,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.02,
+    "nbm_pop_day": 0.14,
+    "nbm_precip": 0.0
+   },
+   "mid": 0.015,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:57:50Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:57:50Z",
+     0.0
+    ],
+    [
+     "2026-11-09T01:11:18Z",
+     0.0
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "DAL",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 0,
+   "exp_val": "0.00",
+   "amount": 0.0,
+   "trace": false,
+   "p": 0.1049,
+   "p_raw": 0.1049,
+   "curve": {
+    "0.05": 0.3776,
+    "0.1": 0.3566,
+    "0.2": 0.3077,
+    "0.5": 0.1958,
+    "1.0": 0.1049,
+    "2.0": 0.035
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.2258
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.098
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.075
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.07,
+    "nbm_pop_day": 0.544,
+    "nbm_precip": 0.0
+   },
+   "mid": 0.15,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:57:52Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:57:52Z",
+     0.1608
+    ],
+    [
+     "2026-11-09T01:11:19Z",
+     0.1049
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "SATX",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 1,
+   "exp_val": "0.53",
+   "amount": 0.53,
+   "trace": false,
+   "p": 0.986,
+   "p_raw": 0.986,
+   "curve": {
+    "0.05": 1.0,
+    "0.1": 1.0,
+    "0.2": 1.0,
+    "0.5": 0.993,
+    "1.0": 0.986,
+    "2.0": 0.986
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 1.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.9608
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 1.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 1.0
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.68,
+    "nbm_pop_day": 1.0,
+    "nbm_precip": 29.2
+   },
+   "mid": 0.975,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:58:35Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:58:35Z",
+     1.0
+    ],
+    [
+     "2026-11-09T01:11:23Z",
+     0.986
+    ]
+   ],
+   "plays": []
+  },
+  {
+   "code": "HOU",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 1,
+   "exp_val": "0.42",
+   "amount": 0.42,
+   "trace": false,
+   "p": 0.6154,
+   "p_raw": 0.6154,
+   "curve": {
+    "0.05": 0.8252,
+    "0.1": 0.7902,
+    "0.2": 0.7762,
+    "0.5": 0.7203,
+    "1.0": 0.6154,
+    "2.0": 0.4965
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.9355
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.5098
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.55
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.5238
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.41,
+    "nbm_pop_day": 0.977,
+    "nbm_precip": 3.0
+   },
+   "mid": 0.775,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:58:37Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:58:37Z",
+     0.7133
+    ],
+    [
+     "2026-11-09T01:11:24Z",
+     0.6154
+    ]
+   ],
+   "plays": [],
+   "gated": "station rules text"
+  },
+  {
+   "code": "OKC",
+   "target": "2026-11-09",
+   "lead": 1,
+   "outcome": 0,
+   "exp_val": "0.00",
+   "amount": 0.0,
+   "trace": false,
+   "p": 0.0,
+   "p_raw": 0.0,
+   "curve": {
+    "0.05": 0.0,
+    "0.1": 0.0,
+    "0.2": 0.0,
+    "0.5": 0.0,
+    "1.0": 0.0,
+    "2.0": 0.0
+   },
+   "trace_p": 0.0,
+   "members": 143,
+   "models": {
+    "gfs025": {
+     "n": 31,
+     "wet": 0.0
+    },
+    "ecmwf_ifs025": {
+     "n": 51,
+     "wet": 0.0
+    },
+    "icon_seamless": {
+     "n": 40,
+     "wet": 0.0
+    },
+    "gem_global": {
+     "n": 21,
+     "wet": 0.0
+    }
+   },
+   "ref": {
+    "nbm_pop_max": 0.0,
+    "nbm_pop_day": 0.0,
+    "nbm_precip": 0.0
+   },
+   "mid": 0.005,
+   "model_version": "2026-07-24.d2-newrules",
+   "first_logged": "2026-11-08T17:58:38Z",
+   "cfg": "a3aa639c",
+   "p_hist": [
+    [
+     "2026-11-08T17:58:38Z",
+     0.0
+    ],
+    [
+     "2026-11-09T01:12:10Z",
      0.0
     ]
    ],
